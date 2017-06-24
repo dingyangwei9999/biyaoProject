@@ -16,7 +16,7 @@
 			    </div>
 			</form>
 		</div>
-		<div class="copyright">2017 © dk by www.dk-lan.com</div>
+		<div class="copyright">2017 @copyright 必要家 版权所有</div>
 	</div>
 </template>
 

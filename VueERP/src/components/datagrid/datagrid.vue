@@ -51,6 +51,7 @@
         },
         created(){
             if(this.api){
+                console.log(this.api)
                 http.get(this.api)
                 .then(response => {
                     this.datasource = response.data
