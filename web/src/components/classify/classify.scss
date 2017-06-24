@@ -1,0 +1,118 @@
+@import '../../assets/common/common.scss';
+body{
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }  
+.b_classify{
+    display: flex;
+    flex-direction:column;
+    height: 100%;
+    .swiper-container {
+        font-family: 'Microsoft YaHei',"Comic Sans MS","幼圆","黑体",sans-serif;
+        width: 100%;
+        height: 1.171875rem;
+        padding-left:0.625rem;
+        -webkit-box-shadow: 1px 1px 5px rgba(7,0,2,.2);
+        .swiper-slide {
+            font-size: 16px;
+            background: #fff;
+            /* Center slide text vertically */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color:#333333;
+        }
+        .checked{
+            border-bottom: 0.046875rem solid #523568;
+            color:#523568;
+        }
+    }
+    .b_products_list{
+        // text-align: center;
+        // overflow: hidden;
+        flex:1;
+        background: #F5F5F5;
+        overflow-x:hidden; 
+        .classify_title{
+            height: 1.5625rem;
+            position: relative;
+            line-height: 1.5625rem;
+            width: 100%;
+            text-align: center; 
+            >span{
+                font-size: 16px;
+                }
+            .xian1{
+                display: block;
+                position: absolute;
+                height: 0.078125rem;
+                width: 20%;
+                background:#ccc;
+                top: 50%;
+                left: 0;
+            }
+            .xian2{
+                display: block;
+                position: absolute;
+                height: 0.078125rem;
+                width: 20%;
+                background:#ccc;
+                top: 50%;
+                right: 0;            
+            }
+        }
+        .classify_content{
+            width: 45.5%;
+            background: #fff;
+            margin-left: 3%;
+            margin-top: 10px;
+            min-height:2.28125rem;
+            padding-bottom: 0.3125rem;
+            float: left;
+            .imgBox{
+                min-height: 2.28125rem;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            } 
+            .list_title{
+                text-align: center;
+                margin-left: 3%;
+                margin-right: 3%;  
+                margin-top: 5px;
+                padding: 0 0.15625rem;
+                height: 0.390625rem;
+                line-height: 0.390625rem;
+                font-size: 14px;
+                color:#333;
+
+            } 
+            .inaline{
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            } 
+            .price{
+                color:#f33;
+                margin-top:0.078125rem;
+                text-align: center;
+                font-size: 14px;
+                height: 0.520625rem;
+            }        
+        }
+        .halvingLine{
+            float: left;
+            width: 100%;
+            height: 40px;
+            color:#ccc;
+            font-size: 14px;
+            text-align: center;
+            line-height: 40px;
+        }
+    }
+}

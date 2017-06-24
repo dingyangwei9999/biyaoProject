@@ -27,7 +27,7 @@
 
 <script type="text/javascript">
 	import './header.scss'
-	// import $ from 'jquery'
+	import $ from 'jquery'
 
 	export default {
 		// methods:{
