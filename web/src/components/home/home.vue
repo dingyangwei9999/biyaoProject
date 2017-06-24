@@ -10,7 +10,7 @@
 				<router-view class="dk-viewer"></router-view>
 			</div>
 		</div>
-		<div class="dk-footer">@dk</div>
+		<div class="dk-footer"></div>
 	</div>	
 </template>
 

@@ -31,13 +31,22 @@
 			
 		},
 		mounted(){
+			showFoot:{
+					$('#classify').css('color','#B768A5')
+					$('#classify i').css('color','#B768A5')	
+			}
 			var footRouter = window.location.hash.slice(2);
-			console.log(footRouter,this,$('.classify'))
 			switch (footRouter){
 				case "classify":
-					$('#classify').css('color','red')
-					$('#classify i').css('color','red')
+					this.showFoot;
 					break;
+				case "member":
+				 	this.showFoot;
+				case "shopcart":
+					this.showFoot;
+					break;
+				case "":
+					this.showFoot;
 			}
 		}
 	}

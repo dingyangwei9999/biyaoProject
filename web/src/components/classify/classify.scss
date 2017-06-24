@@ -14,8 +14,8 @@ body{
     .swiper-container {
         font-family: 'Microsoft YaHei',"Comic Sans MS","幼圆","黑体",sans-serif;
         width: 100%;
-        height: 75px;
-        padding-left:40px;
+        height: 45px;
+        padding-left:20px;
         -webkit-box-shadow: 1px 1px 5px rgba(7,0,2,.2);
         .swiper-slide {
             font-size: 16px;
@@ -27,7 +27,7 @@ body{
             color:#333333;
         }
         .checked{
-            border-bottom: 3px solid #523568;
+            border-bottom: 2px solid #523568;
             color:#523568;
         }
     }
@@ -38,9 +38,9 @@ body{
         background: #F5F5F5;
         overflow-x:hidden; 
         .classify_title{
-            height: 100px;
+            height: 45px;
             position: relative;
-            line-height: 100px;
+            line-height: 45px;
             width: 100%;
             text-align: center; 
             >span{
@@ -49,18 +49,18 @@ body{
             .xian1{
                 display: block;
                 position: absolute;
-                height: 5px;
+                height: 2px;
                 width: 20%;
-                background:#ccc;
+                background:#D8D8D8;
                 top: 50%;
                 left: 0;
             }
             .xian2{
                 display: block;
                 position: absolute;
-                height: 5px;
+                height: 2px;
                 width: 20%;
-                background:#ccc;
+                background:#D8D8D8;
                 top: 50%;
                 right: 0;            
             }
@@ -71,7 +71,7 @@ body{
             margin-left: 3%;
             margin-top: 10px;
             min-height:146px;
-            padding-bottom: 20px;
+            padding-bottom: 5px;
             float: left;
             .imgBox{
                 min-height: 146px;
@@ -84,7 +84,7 @@ body{
                 text-align: center;
                 margin-left: 3%;
                 margin-right: 3%;  
-                margin-top: 5px;
+                margin-top: 3px;
                 padding: 0 10px;
                 height: 25px;
                 line-height: 25px;
@@ -99,20 +99,20 @@ body{
             } 
             .price{
                 color:#f33;
-                margin-top:5px;
+                margin-top:2px;
                 text-align: center;
                 font-size: 14px;
-                height: 33.32px;
+                height: 20px;
             }        
         }
         .halvingLine{
             float: left;
             width: 100%;
-            height: 40px;
+            height: 30px;
             color:#ccc;
             font-size: 14px;
             text-align: center;
-            line-height: 40px;
+            line-height: 30px;
         }
     }
 }

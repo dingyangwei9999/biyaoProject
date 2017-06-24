@@ -15,7 +15,7 @@
 	            <div class="swiper-slide">数码</div> 
 	        </div>
 	    </div>
-	    <div class="b_products_list">
+	    <div class="b_products_list" @scroll="scroll">
 		    <!-- <div class="classify_show">
 		    	<ul>
 		    	<li>儿童</li>
@@ -55,11 +55,13 @@
 	    		<div class="list_title">休闲冰棉</div>
 	    		<div class="price">$99</div>
 	    	</router-link>
+	    	
 	    	<div class="halvingLine">
-		--------------------  我是有底线的 -------------------- 
+		-----------------  我是有底线的 ----------------- 
 	    	</div>	    		    	    	
 	    </div>
 	    <classify_foot></classify_foot>
+	    <classify_backTop ref='goTop'></classify_backTop>
 	</div>
 </template>
 
@@ -69,16 +71,20 @@
 	import $ from 'jquery' 
 	import foot from '../foot/foot.vue'
 	import head from '../head/head.vue'
+	import backTop from '../goTop/goTop.vue'
 	export default {
 		components:{
 			'classify_foot':foot,
-			'classify_head':head
+			'classify_head':head,
+			'classify_backTop':backTop
 		},
 		data:function(){
 			return {}
 		},
 		methods:{
-			
+			scroll(event){
+				this.$refs.goTop.ctrlShow(event.target.scrollTop);
+			}
 		},
 		mounted(){
 			var swiper = new Swiper('.swiper-container', {
@@ -88,6 +94,9 @@
 		        spaceBetween: 20,
 		        freeMode: true
 			})
+			let target = $('.b_products_list');
+			this.$refs.goTop.getScrollTarget(target);
+			console.log(target)
 		}
 	}
 </script>
