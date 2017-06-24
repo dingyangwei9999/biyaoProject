@@ -1,0 +1,170 @@
+@import '../../assets/common/common.scss';
+@import '../../assets/iconfont/iconfont.css';
+
+.detail-box{
+	display: flex;
+	flex-direction:column;
+	width: 100%;
+	height: 100%;
+	background-color: #F5F5F5;
+	header{
+		$height: 42px;
+		height: $height;
+		background-color: #fff;
+		display: flex;
+		box-shadow: 0 0 10px #aaa;
+		z-index: 10;
+		a{
+			line-height: $height;
+			width:45px;
+			text-align: center;
+			i{
+				line-height: $height;
+				color:#333;
+				display: block;
+				height:$height;
+				font-size: 30px;
+			}
+		}
+		h2{
+			font-size: 16px;
+			flex:1;
+			margin:0;
+			line-height: $height;
+		}
+	}
+	main{
+		flex:1;
+		overflow-x:hidden;
+			.swiper-container{
+				width:100%;
+				background-color: #ccc;
+				margin-bottom: 10px;
+				img{
+					width:100%;
+				}
+				.swiper-pagination-bullet-active{
+					background-color: $main-color;
+				}
+				.swiper-pagination-bullets{
+					width:auto;
+					right:25px;
+					left:auto;
+				}
+		}
+		.product-msg{
+			background-color: #fff;
+			padding: 10px;
+			box-shadow: 0 0 10px #aaa;
+			margin-bottom: 15px;
+			.top{
+				$height:35px;
+				height:$height;
+				border-bottom: 1px solid #ccc;
+				.price{
+					color:#F85453;
+				    font-size: 18px;
+				    display: inline-block;
+				    line-height: $height;
+					&:before{
+						content:"￥";
+					}
+				}
+				p{
+					display: inline-block;
+					font-size: 12px;
+					margin:0 0 0 10px;
+					line-height: $height;
+				}
+			}
+			h2{
+				height:40px;
+				font-size: 14px;
+				line-height: 40px;
+				margin:0;
+				border-bottom: 1px solid #ccc;
+			}
+			.grade{
+				height:60px;
+				display: flex;
+				padding: 12px 7px 7px 7px;
+				.g-left,.g-right{
+					flex: 1;
+					text-align: center;
+					span{
+						color:$main-color;
+						margin-bottom: 5px;
+						display: inline-block;
+					}
+				}
+				.g-left{
+					border-right: 1px solid #ccc;
+				}
+			}
+		}
+		.describe{
+			background-color: #EEE;
+		    padding: 13px 15px;
+		    $height:30px;
+		    dl{
+		    	border-bottom: 1px dotted #999;
+		    	margin-bottom: 0;
+		    	display: flex;
+		    }
+		    dt,dd{
+		    	display: inline-block;
+		    	line-height: $height;
+		    	font-size: 14px;
+		    	font-weight: normal;
+		    }
+		    dt{
+		    	width:112px;
+		    }
+		    dd{
+		    	flex:1;
+		    }
+		}
+		.listImgs{
+			img{
+				width:100%;
+				margin-bottom: 10px;
+			}
+		}
+	}
+	footer{
+		display: flex;
+		background-color: #fff;
+		box-shadow: 0 0 5px #aaa;
+		z-index: 10;
+		span{
+			flex:1;
+			display: inline-block;
+			height:40px;
+			margin:10px 5px;
+			line-height: 40px;
+			text-align: center;
+			font-size: 14px;
+			border-radius:3px;
+			&.goCar{
+				border:1px solid #ccc;
+				box-shadow:0 3px 10px 0  #ccc;
+				i{
+					font-size: 24px;
+					color:#333;
+					font-weight: bolder;
+				}
+			}
+			&.addCar{
+				box-shadow:0 2px 10px 0  $main-color;
+				border:1px solid $main-color;
+				color:$main-color;
+			}			
+			&.buy{
+				box-shadow:0 3px 10px 0  $main-color;
+				border:1px solid $main-color;
+				background-color: $main-color;
+				color:#fff;
+			}			
+		}
+	}
+}
