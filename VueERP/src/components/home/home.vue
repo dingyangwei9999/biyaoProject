@@ -4,13 +4,13 @@
 		<div class="dk-body">
 			<dk-nav></dk-nav>
 			<div class="dk-content">
-				<div class="dk-toolbar" style="background: #fff;">
+<!-- 				<div class="dk-toolbar" style="background: #fff;">
 					<a href="javascript:" class="btn btn-primary btn-sm" :class="value.class" v-if="toolList" v-for="(value,key) in toolList" @click="click(value)">{{value.text ? value.text : key}}</a>
-				</div>
+				</div> -->
 				<router-view class="dk-viewer"></router-view>
 			</div>
 		</div>
-		<div class="dk-footer">@dk</div>
+		<!-- <div class="dk-footer">@copyright 必要家 后台商品管理系统 版权所有</div> -->
 	</div>	
 </template>
 

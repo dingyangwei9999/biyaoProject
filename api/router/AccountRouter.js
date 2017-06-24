@@ -54,6 +54,7 @@ exports.Register = function(app){
             })
         }        
     })
+
     app.post('/memberCenter',urlencodedParser,function(request,response){
             console.log(requset.body,"===>",response.body)
             DB.get('sexUser',{username:request.body.username}),
@@ -87,7 +88,6 @@ exports.Register = function(app){
     })
     app.post('/mamage',urlencodedParser,function(request,response){
         DB.get('watchadd',{},function(result){
-            // console.log(result)
             response.send(result)
             console.log(result)
         })
@@ -101,3 +101,4 @@ exports.Register = function(app){
 
     })
 }
+

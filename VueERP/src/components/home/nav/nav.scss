@@ -1,6 +1,11 @@
-@import '../../../assets/common/global.scss';
-.dk-nav-content{position: absolute; top: 0; bottom: 0; left: 0; width: 228px; border-right: solid 1px #ccc;
-	overflow-x: hidden; overflow-y: auto;
+// @import '../../../assets/common/global.scss';
+.dk-nav-content{
+	// position: absolute; top: 0; bottom: 0; left: 0; 
+	float:left;
+	height: 100%;
+	width: 200px; 
+	border-right: solid 1px #ccc;
+	// overflow-x: hidden; overflow-y: auto;
 	transition: width 0.5s;
 	.dk-nav-item{
 		max-height: 40px;
@@ -10,7 +15,7 @@
 		>a:not(.btn){
 			padding: 10px 15px; display: block;
 			overflow: hidden; white-space: nowrap; text-overflow:ellipsis;
-			i{color: $main-color; margin-right: 5px; font-size: 16px;}
+			i{color: #1ab394; margin-right: 5px; font-size: 16px;}
 			>i:last-child{float: right; margin-top: 2px; transition: transform 0.5s;}
 		}
 		.dk-sub-nav{
