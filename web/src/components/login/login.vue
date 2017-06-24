@@ -21,7 +21,7 @@
 </template>
 
 <script type="text/javascript">
-	import './Login.scss'
+	import './login.scss'
 	import { mapGetters, mapActions } from 'vuex'
 	import $ from 'jquery'
 

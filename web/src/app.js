@@ -12,7 +12,9 @@ import './assets/bootstrap/datepicker/js/bootstrap-datepicker'
 import './assets/jquery-validation-1.15.0/dist/jquery.validate.js'
 import './assets/jquery-validation-1.15.0/dist/localization/messages_zh.js'
 import './assets/jquery-confirm/jquery-confirm.js'
+
 import './assets/Swiper-3.4.2/dist/js/swiper.min.js'
+
 
 import $ from 'jquery'
 import Vue from 'vue';
