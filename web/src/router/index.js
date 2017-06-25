@@ -30,7 +30,7 @@ const router = new VueRouter({
 		name: 'classify',
 		component: classifyComponent		
 	},{
-		path: '/detail',
+		path: '/detail/:_id',
 		name: 'detail',
 		component: DetailComponent
 	},{

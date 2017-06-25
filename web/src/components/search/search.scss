@@ -35,9 +35,15 @@
 			line-height:$height;
 			// padding:0 0 0 5px;
 			font-size: 14px;
-		}	
+		}
+		#search_cha{
+			position: absolute;
+			top:21%;
+			font-size: 14px;
+			display:inline-block;
+			left:88%;
+		}
 	}
-
 	main{
 		flex:1;
 		overflow-x:hidden;
@@ -72,6 +78,36 @@
 					}
 				}
 				
+			}
+		}
+		.search-history{
+			padding: 0 10px;
+			.search-warp{
+				h4{
+				position: relative;	
+				color:$main-color;
+					>i{
+						position: absolute;
+						right: 0px;
+						top:0px;
+						font-size: 20px;
+					}
+				}
+				.tianjia{
+					height: 100%;
+					>li{
+						width: 50px;
+						height: 30px;
+						border:1px solid #ccc;
+						text-align: center;
+						line-height: 30px;
+						border-radius: 5px;
+						background: #F2F2F2;
+						min-height: 20px;
+
+					}
+				}
+							
 			}
 		}
 	}

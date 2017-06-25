@@ -1,3 +1,30 @@
-.biyao_header{
-	
-}
+.member-top{
+		width: 100%;
+		height: 1.3125rem;
+		.member-back{
+			width: 15%;
+			height: 1.3125rem;
+			float: left;
+			text-align: center;
+			&>i{
+				font-size: 30px;
+				line-height: 1.3125rem;
+
+			}
+		}
+		.member-msg{
+			width: 70%;
+			height: 1.3125rem;
+			float: left;
+			&>p{
+				line-height: 1.3125rem;
+				text-align: center;
+				font-size: 16px;
+			}
+		}
+		.member-menu{
+			width: 15%;
+			height: 1.3125rem;
+			float: left;
+		}
+	}

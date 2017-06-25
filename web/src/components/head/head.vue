@@ -1,21 +1,28 @@
 <template>
-	<!-- <div class="biyao_header">
-		<router-link to ><span class="iconfont icon-danzuokuohao"></span></router-link>
-		<span>分类</span>
-
-	</div> -->
+	<div class="member-top">
+			<div class="member-back">
+				<i class="iconfont icon-danzuokuohao"></i>
+			</div>
+			<div class="member-msg">
+				<p>{{textValue}}</p>
+			</div>
+			<div class="member-menu"></div>
+	</div>
 </template>
 <script type="text/javascript">
 	import './head.scss'
 	import { mapGetters, mapActions } from 'vuex'
 	export default{
 		data:function(){
-			return{}
+			return{
+				textValue:'分类'
+			}
 		},
 		methods:{
-
+			
 		},
 		mounted(){
+			var footRouter = window.location.hash.slice(2);
 			
 		}
 	}

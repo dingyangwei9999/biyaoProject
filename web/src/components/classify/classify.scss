@@ -37,6 +37,30 @@ body{
         flex:1;
         background: #F5F5F5;
         overflow-x:hidden; 
+        .classify_show{
+            text-align: left;
+            overflow: hidden;
+            background: #FAFAFA;
+            padding-left: 15px;
+            border-bottom: 1px solid #eee;
+            ul{
+                 li{
+                    border-radius: 50px;
+                    // background: $main-color;
+                    float: left;
+                    padding: 0 10px;
+                    color: #000;
+                    font-size: 14px;
+                    margin: 8px 15px 8px 0;
+                    height: 28px;
+                    line-height: 28px;
+                }
+                .checked{
+                     background: $main-color;
+                     color:#fff;
+                }
+            }
+        }
         .classify_title{
             height: 45px;
             position: relative;
@@ -75,7 +99,7 @@ body{
             float: left;
             .imgBox{
                 min-height: 146px;
-                img{
+                >img{
                     width: 100%;
                     height: 100%;
                 }
