@@ -41,12 +41,15 @@
 </template>
 
 <script type="text/javascript">
+	import $ from 'jquery'
 	import './shoppingCart.scss'
 	import '../../assets/iconfont/iconfont.css'
 	import shoppingCartHeader from './shoppingCartHeader/shoppingCartHeader.vue'
+	import erp from '../../global.js'
 	// import shoppingCartSkip from ''
 	// shoppingCartSkip 路径未写
 	import http from '../../utils/HttpClient.js'
+
 
 	export default {
 		components:{
@@ -153,12 +156,19 @@
 		},
 		created(){
 
+			// if(this.api){
+			// 	http.post('api').then(response=>{
+			// 		console.log(response)
+			// 		this.goods=response;
+			// 	})
+			// }
 			if(this.api){
-				http.post('api').then(response=>{
-					console.log(response)
-					this.goods=response;
-				})
+				$.post(this.api+'addCart',{},function(response){
+
+				}.bind(this))
+	
 			}
+
 			// 执行一次判断全选反选
 			setTimeout(function(){
 				this.judgeAll();
