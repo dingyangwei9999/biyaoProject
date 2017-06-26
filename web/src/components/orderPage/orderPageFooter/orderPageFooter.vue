@@ -1,6 +1,6 @@
 <template>
 	<div class="orderPage_Footer clearfix">
-		<p>实付款：<span> ￥2343</span></p>
+		<p>实付款：<span> ￥{{totalPrice}}</span></p>
 		<span class="orderPage_settlement" :class="{activeopa:classNameIsChange}" @touchstart="classNameChange" @touchend="classNameNotChange" >结算</span>
 	</div>
 </template>
@@ -15,9 +15,11 @@
 		},
 		data(){
 			return {
-				goods:[{a:1,selected:true},{b:2,selected:true},{c:1,selected:true},{d:1,selected:false}],
+				goods:[{color:'深灰色',selected:true,count:12,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'},{color:'亚麻色',selected:true,count:5,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'},{color:'深灰色',selected:true,count:12,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'},{color:'深灰色',selected:true,count:12,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'}],
 				api:'',
 				classNameIsChange:false,
+				totalPrice:0,
+
 			}
 		},
 		methods:{
@@ -27,14 +29,28 @@
 			classNameNotChange:function(){
 				this.classNameIsChange=false;
 			},
+			calculatePrice:function(){
+				let totalPrice=0;
+				this.goods.forEach(function(item){
+					if(item.selected){
+						totalPrice+=item.count*item.price
+					}
+				})
+				this.totalPrice=totalPrice;
+				console.log(totalPrice)
+			},
 		},
 		created(){
 			if(this.api){
 				http.post('api').then(response=>{
 					console.log(response)
 					this.goods=response;
+
+					this.calculatePrice();
 				})
 			}
+			// 有数据之后删掉此行
+			this.calculatePrice();
 
 
 		}
