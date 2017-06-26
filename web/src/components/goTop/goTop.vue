@@ -28,11 +28,7 @@
 			ctrlShow(value, threshold){
 				threshold = threshold || 200;
 				this.value = value;
-				if(this.value >= threshold){
-					this.show = true;
-				}else{
-					this.show = false;
-				}
+				this.show = this.value >= threshold ? true : false;
 			}
 		}
 	}

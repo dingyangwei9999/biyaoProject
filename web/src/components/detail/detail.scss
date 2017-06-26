@@ -31,6 +31,9 @@
 			flex:1;
 			margin:0;
 			line-height: $height;
+			overflow: hidden;
+			text-overflow:ellipsis;
+			white-space: nowrap;
 		}
 	}
 	main{
@@ -165,6 +168,122 @@
 				background-color: $main-color;
 				color:#fff;
 			}			
+		}
+	}
+	//选择尺寸弹出框
+	.info-box{
+		color:#555;
+		position: fixed;
+		z-index: 10;
+		bottom:0;
+		// height:350px;
+		width:100%;
+		background-color: #fff;
+		.top{
+			padding:10px;
+			border-bottom: 1px solid #ccc;
+			.simg-box {
+				float:left;
+				border:1px solid #ccc;
+				img{
+					width:62px;
+					height:62px;
+				}
+			}
+			.t-box{
+				float:left;
+				padding: 5px 0 5px 15px;
+				.info-price{
+					color:#F85252;
+					font-size: 14px;
+					&:before{
+						content:"￥";
+					}
+				}
+				.cycle{
+					color:#333;
+				}
+			}
+			span.iconfont{
+				float: right;
+				margin-right:10px;
+			}
+		}
+		>div{
+			padding:0 10px 5px;
+			border-bottom:1px solid #ccc;
+			>h3{
+				font-size: 14px;
+				margin:0;
+				line-height: 40px;
+			}
+		}
+		.color, .size{
+			span{
+				border:1px solid $main-color;
+				padding:5px 25px;
+				display: inline-block;
+				margin:0 6px 10px 0;
+				color:#333;
+			}
+		}
+		.buy-num{
+			$height: 56px;
+			height: $height;
+			>p{
+				font-size: 14px;
+				float: left;
+				margin:0;
+				line-height: 40px;
+				line-height: $height;
+			}
+			div{
+				float: right;
+				padding:10px 0 0 0;
+				span{
+					display: inline-block;
+					padding: 8px 14px;
+					border:1px solid #ccc;
+					font-size: 12px;
+					text-align: center;
+					&:nth-of-type(2){
+						padding: 8px 20px;
+						font-weight: normal;
+						width:55px;
+					}
+				}
+			}
+		}	
+		.b-affirm{
+			padding:8px 10px;
+			span{
+				display: inline-block;
+				line-height:34px;
+				text-align: center;
+				font-size: 14px;
+				border-radius:3px;
+				&.b-goCar{
+					float: left;
+					width:30%;
+					border:1px solid #ccc;
+					box-shadow:0 3px 10px 0  #ccc;
+					// display: table-cell;
+					i{
+						font-size: 24px;
+						color:#333;
+						font-weight: bolder;
+					}
+				}
+				&.b-addCar{
+					float: right;
+					width:65%;
+					box-shadow:0 2px 10px 0  $main-color;
+					border:1px solid $main-color;
+					color:#fff;
+					background-color: $main-color;
+					line-height:36px;
+				}	
+			}
 		}
 	}
 }
