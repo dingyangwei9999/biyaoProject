@@ -18,8 +18,7 @@ import Register from '../components/register/register.vue'
 import Member from '../components/member/member.vue'
 
 
-Vue.use(VueRouter)
-
+Vue.use(VueRouter,)
 const router = new VueRouter({
 	routes: [{
 		path: '/',
