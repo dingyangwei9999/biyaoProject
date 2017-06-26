@@ -11,11 +11,14 @@ import Client from '../components/client/client.vue'
 import classifyComponent from '../components/classify/classify.vue'
 import DetailComponent from '../components/detail/detail.vue'
 import SearchComponent from '../components/search/search.vue'
-
+import Footer from '../components/foot/foot.vue'
 
 import Logins from '../components/logins/logins.vue'
 import Register from '../components/register/register.vue'
 import Member from '../components/member/member.vue'
+import Modify from '../components/modifyPsw/modify.vue'
+import MineMessage from '../components/mineMessage/message.vue'
+import UpdataPsw from '../components/updatePsw/updatapsw.vue'
 
 
 Vue.use(VueRouter)
@@ -48,7 +51,20 @@ const router = new VueRouter({
 	},{
 		path:'/member',
 		name:'member',
-		component:Member
+		component:Member,
+		children:[{
+			path:'/message',
+			name:'message',
+			component:MineMessage
+		}]
+	},{
+		path:'/modify',
+		name:'modify',
+		component:Modify
+	},{
+		path:'/updataPsw',
+		name:'updataPsw',
+		component:UpdataPsw
 	}]
 })
 

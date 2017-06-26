@@ -9,22 +9,23 @@ const state = {
 
 
 const mutations = {
-	REGISTER: (data, formData) => {
-		
-		let username = formData.username
-		let psw = formData.psw
+	UPDATA: (data, upData) => {
+		console.log(upData)
+		let oldpsw = upData.oldpsw
+		let psw = upData.psw
+		let pswtoo = upData.pswtoo
 
 		$.ajax({
 			type:'post',
-			data:{username,psw},
+			data:{oldpsw,psw,pswtoo},
 			dataType:'json',
-			url:erp.baseUrl + 'register',
+			url:erp.baseUrl + 'updataPsw',
 			success:function(response){
 				console.log(response)
 				console.log(response.status)
 				if (response.status == true) {
-					alert('注册成功')
-					router.push({name:'logins'})
+					alert('修改成功')
+					router.push({name:'member'})
 				}else{
 					alert(response.message)
 				}
@@ -32,17 +33,18 @@ const mutations = {
 		})
 		
 	},
-	DENGLU:() => {
-		router.push({name:'logins'})
+	FIND:() => {
+		router.push({name:'modify'})
 	}
 }
 
 const actions = {
-	register: ({commit},formData) => {
-		commit('REGISTER', formData)
+	updata: ({commit},updata) => {
+		console.log(updata)
+		commit('UPDATA', updata)
 	},
-	denglu:({commit}) => {
-		commit('DENGLU')
+	find:({commit}) => {
+		commit('FIND')
 	}
 }
 
@@ -51,3 +53,9 @@ export default {
 	mutations,
 	actions
 }
+
+
+
+ 
+
+

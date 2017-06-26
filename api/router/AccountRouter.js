@@ -1,4 +1,4 @@
-var DB = require('../module/DBHelper');
+var db = require('../module/DBHelper');
 var ApiResult = require('../module/ApiResult');
 
 var bodyParser = require('body-parser');
@@ -6,47 +6,53 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 exports.Register = function(app){
+
+    //登录时的验证
     app.post('/login', urlencodedParser, function(request, response){
+        console.log(request.body)
         if(!request.body || !request.body.username){
             response.send(ApiResult(false, '用户名不能为空！'));
-        } else if(!request.body || !request.body.password){
+        } else if(!request.body || !request.body.psw){
             response.send(ApiResult(false, '密码不能为空！'));
         } else {
-            DB.get('sexUser', {username: request.body.username}, function(result){
+            db.get('biyaoMember',{username:request.body.username}, function(result){
                 if(!result.status){
                     response.send(result);
                 } else {
                     var data = result.data;
                     if(!data[0]){
                         response.send(ApiResult(false, '用户名不存在！'));
-                    } else if(data[0].password != request.body.password){
+                    } else if(data[0].psw != request.body.psw){
                         response.send(ApiResult(false, '密码错误！'));
                     } else {
-                        response.send(ApiResult(true));
+                        var id = data[0]._id;
+                        response.send({status:ApiResult(true),_id:id});
                     }
                 }
             })
         }
     });
 
+    //注册时的验证
     app.post('/register', urlencodedParser, function(request, response){
-        // console.log(request.body)
+        console.log(request.body)
         if(!request.body || !request.body.username){
             response.send(ApiResult(false, '用户名不能为空！'));
-        } else if(!request.body || !request.body.password){
+        } else if(!request.body || !request.body.psw){
             response.send(ApiResult(false, '密码不能为空！'));
         }  else {
-            delete request.body.repassword;
-            DB.get('sexUser', {username: request.body.username}, function(result){
+            
+            db.get('biyaoMember', {username: request.body.username}, function(result){
                 if(!result.status){
                     response.send(result);
                 } else {
+
                     var data = result.data;
                     if(data[0]){
                         response.send(ApiResult(false, '用户名已被注册'));
                     } else {
                         console.log(5)
-                        DB.insert('sexUser', request.body, function(insertResult){
+                        db.insert('biyaoMember', request.body, function(insertResult){
                             response.send(insertResult);
                         })
                     }
@@ -54,6 +60,84 @@ exports.Register = function(app){
             })
         }        
     })
+
+    //找回密码
+    app.post('/findpsw', urlencodedParser, function(request, response){
+        console.log(request.body)
+        if(!request.body || !request.body.username){
+            response.send(ApiResult(false, '用户名不能为空！'));
+        } else if(!request.body || !request.body.psw){
+            response.send(ApiResult(false, '密码不能为空！'));
+        } else {
+            db.get('biyaoMember',{username:request.body.username}, function(result){
+                if(!result.status){
+                    response.send(result);
+                } else {
+                    var data = result.data;
+                    if(!data[0]){
+                        response.send(ApiResult(false, '用户名不存在！'));
+                    } else {
+                        db.modify('biyaoMember',data[0],request.body,function(result){
+                            response.send(result)
+                        })
+                    }
+                }
+            })
+        }
+    });
+
+    //修改密码
+    app.post('/updataPsw', urlencodedParser, function(request, response){
+        console.log(request.body)
+        if(!request.body || !request.body.oldpsw){
+            response.send(ApiResult(false, '密码不能为空！'));
+        } else if(!request.body || !request.body.psw){
+            response.send(ApiResult(false, '密码不能为空！'));
+        } else if(!request.body || !request.body.pswtoo){
+            response.send(ApiResult(false, '密码不能为空！'));
+        } else {
+            if(request.body.psw != request.body.pswtoo){
+                response.send(ApiResult(false, '请确认两次输入的密码相同！'));        
+            }else{
+
+                db.get('biyaoMember',{psw:request.body.oldpsw}, function(result){
+                    if(!result.status){
+                        response.send(result);
+                    } else {
+                        var data = result.data;
+                        if(!data[0]){
+                            response.send(ApiResult(false, '请输入正确的密码！'));
+                        } else {
+                            db.modify('biyaoMember',data[0],{psw:request.body.psw},function(result){
+                                response.send(result)
+                            })
+                        }
+                    }
+                })
+            }
+        }
+    });
+
+    //在数据库中写入购物车的信息
+    app.post('/addCart', urlencodedParser, function(request, response){
+        console.log(request.body)
+
+        db.get('cart',{id:request.body.userId}, function(result){
+           
+            var data = result.data;
+            if(!data[0]){
+                db.insert('cart',response.body,function(result){
+                    console.log(result.result)
+                    response.send(result)
+                })
+            } else {
+                db.modify('cart',result.data,response.body,function(result){
+                    response.send(result)
+                })
+            }
+            
+        })      
+    });
 
     app.post('/memberCenter',urlencodedParser,function(request,response){
             console.log(requset.body,"===>",response.body)

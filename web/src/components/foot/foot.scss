@@ -1,26 +1,23 @@
+@import '../../assets/common/common.scss';
 .biyao_foot{
 	display: flex;
-	border-top:1px solid #ccc;
-    box-shadow: 1px 1px 5px rgba(7,0,2,.2);
+	height: 1.3125rem;
+	border-top:1px solid #ebebeb;
 	width: 100%;
 	margin:0 auto ;
 	background: #fff;
-	border-bottom: solid 1px #ebebeb;
-	bottom: 0;
-	font-size: 14px;
-	left: 0;
+	overflow: hidden;
 	.footCss{
 		flex:1;
 		color:#666;
-		text-align: center;
+		text-align:center;
 		i{
-			font-size: 20px;
+			font-size: 18px;
 			color:#747474;
+			font-weight: bold;
 		}
 		>div{
-			padding-top: 2px;
 			font-size: 12px;
-			padding-bottom: 4px;
 		}
 		
 	}

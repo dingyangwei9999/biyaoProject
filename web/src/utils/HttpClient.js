@@ -5,7 +5,7 @@ import $ from 'jquery'
 
 // import jsonp from 'superagent-jsonp';
 
-const LOCAL_SERVER = '/cloudapi/';
+const LOCAL_SERVER = '';
 
 const DEV_SERVER = '';
 const PRO_SERVER = '';
@@ -76,6 +76,7 @@ const HttpClient = {
                     resolve(res.body);
                 }
             });
+      
     }),
 
     put: (path, query, payload) => new Promise((resolve, reject) => {

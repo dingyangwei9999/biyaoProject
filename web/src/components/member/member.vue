@@ -1,7 +1,7 @@
 <template>
 	<div class="member-container">
 		<div class="member-top">
-			<div class="member-back">
+			<div class="member-back" @click="back">
 				<i class="iconfont icon-danzuokuohao"></i>
 			</div>
 			<div class="member-msg">
@@ -41,7 +41,7 @@
 					<span>我的地址</span>
 					<i class="iconfont icon-danyoukuohao"></i>
 				</div>
-				<div class="changePsw">
+				<div class="changePsw" @click="change">
 					<span>修改密码</span>
 					<i class="iconfont icon-danyoukuohao"></i>
 				</div>
@@ -58,17 +58,26 @@
 				</div>
 			</div>
 		</div>
-		<div class="member-footer"></div>
+		<foot></foot>
 	</div>
 </template>
 
 <script>
 	import './member.scss';
+	import Footer from '../foot/foot.vue'
 
 
 	export default{
 		components:{
-
+			'foot':Footer
+		},
+		methods:{
+			back:function(){
+				this.$router.go(-1)
+			},
+			change:function(){
+				this.$store.dispatch('change')
+			}
 		}
 	}
 </script>	
