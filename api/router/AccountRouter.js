@@ -120,18 +120,29 @@ exports.Register = function(app){
 
     //在数据库中写入购物车的信息
     app.post('/addCart', urlencodedParser, function(request, response){
-        console.log(request.body)
+        let data = JSON.parse(request.body.data);
+        let dataUpdate = {};
+        dataUpdate.userId = data.userId;
+        dataUpdate.productsId = data.productsId;
+        dataUpdate.size = data.size;
+        dataUpdate.color = data.color;
 
-        db.get('cart',{id:request.body.userId}, function(result){
+        // delete data.count;
+        // console.log(data)
+        db.get('cart',dataUpdate, function(result){
            
-            var data = result.data;
-            if(!data[0]){
-                db.insert('cart',response.body,function(result){
-                    console.log(result.result)
+            // var data = result.data;
+            // var responseData = JSON.parse(request.body.data);
+            console.log(result.data)
+            if(!result.data[0]){
+                console.log('insert','====')
+                db.insert('cart', data, function(result){
+                    // console.log(result.result)
                     response.send(result)
                 })
             } else {
-                db.modify('cart',result.data,response.body,function(result){
+                console.log('modify=======');
+                db.modify('cart', result.data[0], data, function(result){
                     response.send(result)
                 })
             }

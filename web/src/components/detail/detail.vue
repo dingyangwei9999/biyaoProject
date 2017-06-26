@@ -105,6 +105,7 @@
 	import erp from '../../global.js'
 	import goTop from '../goTop/goTop.vue'
 
+	// let erp = {baseUrl:'http://10.3.133.81:8787/'}
 	export default {
 		data(){
 			return {
@@ -179,15 +180,18 @@
 						
 			},
 			addCar(){
+				let userId = sessionStorage.getItem('id');
 				let obj = {};
-				obj._id = this._id;
+				obj.productId = this._id;
 				obj.name = this.name;
 				obj.count = this.buyNum;
 				obj.price = this.price;
 				obj.size = this.chooseSize;
 				obj.color = this.chooseColor;
 				obj.selected = true;
-				console.log(obj);
+				obj.userId = userId;
+				console.log(obj, userId);
+				http.post(erp.account + 'addCart',{data: JSON.stringify(obj)})
 			},
 			//显示隐藏规格尺码
 			showInfoBox(){
