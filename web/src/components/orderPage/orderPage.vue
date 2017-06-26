@@ -20,12 +20,12 @@
 							<img src="../../assets/imgs/11.jpg">
 						</div>
 						<div class="orderGoods_middle">
-							<p>天丝牛仔热裤儿童短裤裤儿童</p>
-							<p>藏青 110</p>
+							<p>{{obj.name}}</p>
+							<p>{{obj.color+','+obj.size}}</p>
 						</div>
 						<div class="orderGoods_right">
-							<p class="orderGoods_right_price">￥<span>123</span></p>
-							<p class="orderGoods_right_qty">&times<span>3</span></p>
+							<p class="orderGoods_right_price">￥<span>{{obj.price}}</span></p>
+							<p class="orderGoods_right_qty">&times<span>{{obj.count}}</span></p>
 						</div>
 					</div>
 				</div>
@@ -36,8 +36,8 @@
 					<textarea class="orderMessage_content" placeholder="输入留言内容"></textarea>
 				</div>
 				<div class="orderTotal clearfix">
-					<p>合计：<span>￥489</span></p>
-					<p>共2件</p>
+					<p>合计：<span>￥{{totalPrice}}</span></p>
+					<p>共{{totalCount}}件</p>
 				</div>
 			</div>
 			<div class="orderNote">
@@ -61,10 +61,12 @@
 		},
 		data(){
 			return {
-				goods:[{a:1,selected:true,value:12},{b:2,selected:true,value:16},{c:1,selected:true,value:1},{d:1,selected:false,value:5}],
+				goods:[{color:'深灰色',selected:true,count:12,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'},{color:'亚麻色',selected:true,count:5,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'},{color:'深灰色',selected:true,count:12,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'},{color:'深灰色',selected:true,count:12,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'}],
 				api:'',
 				classNameIsChange:false,
 				selectedbox:false,
+				totalPrice:0,
+				totalCount:0,
 			}
 		},
 		methods:{
@@ -84,14 +86,30 @@
 					e.target.className='box'
 				}
 			},
+			judgeQtyPrice:function(){
+				let totalPrice=0;
+				let totalCount=0;
+				this.goods.forEach(function(item){
+					if(item.selected){
+						totalPrice+=item.count*item.price
+						totalCount+=item.count
+					}
+				})
+				this.totalPrice=totalPrice;
+				this.totalCount=totalCount;
+			},
 		},
 		created(){
 			if(this.api){
 				http.post('api').then(response=>{
 					console.log(response)
 					this.goods=response;
+
+					this.judgeQtyPrice()
 				})
 			}
+			// 有数据后删掉此行
+			this.judgeQtyPrice()
 		}
 	}
 </script>
