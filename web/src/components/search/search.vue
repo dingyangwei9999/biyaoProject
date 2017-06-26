@@ -8,13 +8,13 @@
 		<main>
 			<div v-show='this.content' class="search-history">
 				<div class="search-warp">
-					<h4>历史记录<i class="iconfont icon-lajixiang"></i></h4>
+					<h4>历史记录<i class="iconfont icon-lajixiang" @click='del'></i></h4>
 					<ul class="tianjia" >
 						<li v-for='item in history'>{{item}}</li>
 					</ul>
 					<h4>热门搜索</h4>
 					<ul class="tianjia">
-						<li v-for='items in hot'>{{items}}</li>
+						<li v-for='(item1,idx) in hot' @click='hotSearch(idx,$event)'>{{item1}}</li>
 					</ul>
 				</div>
 			</div>
@@ -41,6 +41,7 @@
 	import './search.scss'
 	import $ from 'jquery'
 	import { mapGetters, mapActions } from 'vuex'
+	import http from '../../utils/HttpClient.js'
 	import erp from '../../global.js'
 	import backTop from '../goTop/goTop.vue'
 
@@ -57,7 +58,7 @@
 				searchData:[],
 				erp:erp,
 				hot:['运动','牛仔裤','男鞋','女装','男包','女包'],
-				history:['运动','牛仔裤'],
+				history:[],
 				imgNull:null
 			}
 		},
@@ -68,7 +69,7 @@
 			startSearch:function(){
 				this.content=false;
 				// console.log(this.searchValue)
-				$.post(erp.baseUrl+'searchProduct',{classify:this.searchValue}).then(response => {
+				http.post(erp.baseUrl+'searchProduct',{classify:this.searchValue}).then(response => {
 					this.searchData = response;
 					if(!response[0]){
 						console.log('输入的数据找不到啊！！！！！')
@@ -85,6 +86,23 @@
 				this.searchValue=null;
 				this.searchClose=false;
 				this.content=true;
+			},
+			hotSearch:function(idx,e){
+				// console.log(idx,this.hot[idx])
+				if(!(this.history.indexOf(this.hot[idx])>-1)){
+					this.history.push(this.hot[idx])
+				}
+				let shuzhi = this.hot[idx]
+				console.log(this.hot[idx],shuzhi)
+				http.post(erp.baseUrl+'searchProduct',{classify:shuzhi}).then(response => {
+					console.log(response)
+					this.searchData = response;
+				})	
+				this.content=false;			
+
+			},
+			del:function(){
+				this.history=[]
 			}
 		},
 		mounted(){
