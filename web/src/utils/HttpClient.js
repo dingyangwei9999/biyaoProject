@@ -5,7 +5,9 @@ import $ from 'jquery'
 
 // import jsonp from 'superagent-jsonp';
 
+
 const LOCAL_SERVER = 'http://10.3.133.20:80/work/';
+
 
 const DEV_SERVER = '';
 const PRO_SERVER = '';
@@ -76,6 +78,7 @@ const HttpClient = {
                     resolve(res.body);
                 }
             });
+      
     }),
 
     put: (path, query, payload) => new Promise((resolve, reject) => {

@@ -1,42 +1,38 @@
 <template>
-	<div class="register-container">
-		<div class="register-top">
-			<div class="register-back" @click="back">
+	<div id="modify-container">
+		<div class="modify-top">
+			<div class="modify-back" @click="back">
 				<i class="iconfont icon-danzuokuohao"></i>
 			</div>
-			<div class="register-msg">
-				<p>注册必要</p>
+			<div class="modify-msg">
+				<p>找回密码</p>
 			</div>
-			<div class="register-menu"></div>
+			<div class="modify-menu"></div>
 		</div>
-		<div class="register-main">
-			<div class="register-con">
+		<div class="modify-main">
+			<div class="modify-con">
 				<div class="label-username">
 					<input type="text" class="username" placeholder="请输入手机号" maxlength="11" v-model="username">
 				</div>
 				<div class="label-password">
 					<input type="password" class="password" placeholder="请输入6-32位登录密码" maxlength="32" v-model="psw">
 				</div>
-				<button class="register-btn" @click="register">注册</button>
-				<div class="register-psw">
-					<a class="register-txt" @click="denglu">
-						已有账号！立即登录
-					</a>
-				</div>
+				<button class="modify-btn" @click="modify">提交</button>
 			</div>
 		</div>
 		<foot></foot>
 	</div>
 </template>
 
-<script>
-	import './register.scss';
+
+<script type="text/javascript">
+	import './modify.scss'
 	import Footer from '../foot/foot.vue'
-	import {mapActions } from 'vuex'
+	import {mapActions } from 'vuex';
 
 	export default{
 		components:{
-			foot:Footer
+			'foot':Footer
 		},
 		data:function(){
 			return {
@@ -44,14 +40,12 @@
 				psw : ''
 			}
 		},
-		methods: {
-			register:function(){
-				this.$store.dispatch('register',{
+		methods:{
+			modify:function(){
+				console.log(111)
+				this.$store.dispatch('modify',{
 					username:this.username,psw:this.psw
 				})
-			},
-			denglu:function(){
-				this.$store.dispatch('denglu')
 			},
 			back:function(){
 				this.$router.go(-1)
