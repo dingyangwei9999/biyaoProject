@@ -5,7 +5,7 @@ import $ from 'jquery'
 
 // import jsonp from 'superagent-jsonp';
 
-const LOCAL_SERVER = '/cloudapi/';
+const LOCAL_SERVER = 'http://10.3.133.20:80/work/';
 
 const DEV_SERVER = '';
 const PRO_SERVER = '';
@@ -19,7 +19,7 @@ function getUrl(path) {
 
 const errorHandler = (err) => {
     if(err.response && err.response.status == 401 && JSON.parse(err.response.text).msg == 'unauthorized'){
-        router.push({name: 'login'})
+        // router.push({name: 'login'})
         return false;
     }
     var str = err.response.status
@@ -32,10 +32,10 @@ const errorHandler = (err) => {
 
 const HttpClient = {
     get: (path, query) => new Promise((resolve, reject) => {
-        if(!window.localStorage.getItem('access_token')){
-            router.push({name: 'login'});
-            return false;
-        }
+        // if(!window.localStorage.getItem('access_token')){
+        //     router.push({name: 'login'});
+        //     return false;
+        // }
         $('.dk-spinner.dk-spinner-three-bounce, dk-spinner-mask').parent('div').show()
         var req = request
             .get(getUrl(path))
@@ -53,15 +53,15 @@ const HttpClient = {
     }),
 
     post: (path, formdata, query) => new Promise((resolve, reject) => {
-        if(path.indexOf('login/index') < 0 && !window.localStorage.getItem('access_token')){
-            router.push({name: 'login'});
-            return false;            
-        }        
+        // if(path.indexOf('login/index') < 0 && !window.localStorage.getItem('access_token')){
+        //     router.push({name: 'login'});
+        //     return false;            
+        // }        
         $('.dk-spinner.dk-spinner-three-bounce, dk-spinner-mask').parent('div').show()
         request
             .post(getUrl(path))
             .set('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
-            .set('Authorization',  window.localStorage.getItem('access_token'))
+            // .set('Authorization',  window.localStorage.getItem('access_token'))
             .query(query)
             .send(formdata)
             .end((err, res) => {
