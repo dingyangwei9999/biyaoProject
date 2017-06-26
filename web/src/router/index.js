@@ -20,6 +20,9 @@ import Modify from '../components/modifyPsw/modify.vue'
 import MineMessage from '../components/mineMessage/message.vue'
 import UpdataPsw from '../components/updatePsw/updatapsw.vue'
 
+import shoppingCartComponent from '../components/shoppingCart/shoppingCart.vue'
+import orderPageComponent from '../components/orderPage/orderPage.vue'
+
 
 Vue.use(VueRouter)
 
@@ -65,6 +68,14 @@ const router = new VueRouter({
 		path:'/updataPsw',
 		name:'updataPsw',
 		component:UpdataPsw
+	},{
+		path: '/shoppingCart',
+		name: 'shoppingCart',
+		component: shoppingCartComponent
+	},{
+		path: '/orderPage',
+		name: 'orderPage',
+		component: orderPageComponent
 	}]
 })
 
@@ -79,3 +90,9 @@ const router = new VueRouter({
 // })
 
 export default router
+
+
+
+
+
+

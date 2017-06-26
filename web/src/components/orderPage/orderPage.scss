@@ -1,0 +1,170 @@
+@import '../../assets/common/common.scss';
+@import '../../assets/common/global.scss';
+
+.orderPageContainer{
+	height:100%;
+	display:flex;
+	flex-direction:column;
+	background:#f5f5f5;
+	.orderPageContent{
+		flex:1;
+		overflow-x:hidden;
+		padding-top:15px;
+		.recipientAdress{
+			padding:14px 14px 7px 14px;
+			font-size: 14px;
+			background: #fff;
+			position: relative;
+			.recipientPhone{
+				margin-left: 10px;
+			}
+			.icon-youkuohao{
+				display:block;
+				position:absolute;
+				right:6px;
+				top:20px;
+				font-size:24px;
+			}
+		}
+		.adressTip{
+			padding:12px 10px 12px 10px;;
+			border-top:1px solid #eee;
+			border-bottom:1px solid #eee;
+			line-height:24px;
+			font-size:12px;
+			p{
+				margin-bottom:0
+			}
+			.icon-gantanhao11-copy{
+				font-size:14px;
+				margin-right:5px;
+				color:red;
+				font-weight:bold;
+			}
+		}
+		.orderDetails{
+			background:#fff;
+			.orderAllGoods{
+				.orderAll{
+					padding:12px;
+					border-bottom:1px dotted #ccc;
+					p{
+						font-size:14px;
+						margin-bottom: 0;
+					}
+				}
+				.orderGoods{
+					padding:12px 12px 0px 12px;
+					border-bottom:1px dotted #ccc;
+					.orderGoods_left{
+						float:left;
+						width:62px;
+						height:62px;
+						img{
+							width:100%;
+							height:100%;
+							border:1px solid #ccc;
+							padding:2px;
+						}
+					}
+					.orderGoods_middle{
+						width:180px;
+						float:left;
+						font-size:14px;
+						padding:8px 10px;
+						p{
+							margin-bottom:0;
+							line-height:24px;
+							text-overflow: ellipsis;
+							white-space: nowrap;
+							overflow: hidden;
+
+						}
+					}
+					.orderGoods_right{
+						float:left;
+						padding:8px 0px 8px 10px;
+						.orderGoods_right_price{
+							font-size:14px;
+							color:$main-color;
+
+						}
+						.orderGoods_right_qty{
+							font-size:12px;
+							float:right;
+							span{margin-left:5px;}
+						}
+					}
+				}
+			}
+			.orderDispatching{
+				padding:12px;
+				border-bottom: 1px dotted #ccc;
+				p{
+					font-size:14px;
+					margin-bottom: 0;
+					span{
+						float:right;
+						font-size:12px;
+					}
+				}
+			}
+			.orderMessage{
+				padding:12px;
+				border-bottom: 1px dotted #ccc;
+				.orderMessage_content{
+					padding:10px;
+					width:100%;
+					min-height:50px;
+					border:1px solid #ccc;
+					border-radius:3px;
+					resize: none;
+					font-size:12px;
+				}
+			}
+			.orderTotal{
+				padding:12px;
+				border-bottom: 1px solid #ccc;
+				p{
+					float: right;
+					margin-bottom:0;
+					font-size: 14px;
+					margin-left:14px;
+					span{
+						color:$main-color;
+					}
+				}
+			}
+		}
+		.orderNote{
+			background:#fff;
+			padding:12px;
+			margin-top:15px;
+			margin-bottom:15px;
+			p{
+				font-size:14px;
+				margin-bottom: 0;
+			}
+			span{
+				font-size: 12px;
+				float:right;
+			}
+			.box{
+				display: inline-block;
+				width:13px;
+				height:13px;
+				border:1px solid #ccc;
+				background:#fff;
+				position: relative;
+				top:2px;
+				right:6px;
+			}
+			.icon-dagou1{
+				color:$main-color;
+				border:0;
+				font-size:14px;
+			}
+			// 开具发票按钮
+		}
+	}
+}
