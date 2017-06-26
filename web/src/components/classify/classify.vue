@@ -9,10 +9,7 @@
 	    <div class="b_products_list" @scroll="scroll">
 		    <div class="classify_show">
 		    	<ul>
-			    	<li class="item1 checked" v-for='(item2,index) in secTitle'  @touchstart='titleLi'>{{item2}}</li>
-		<!-- 	    	<li>童鞋</li>
-			    	<li>单车</li>
-			    	<li>亲子</li> -->
+			    	<li class="item1 checked"  v-for='(item2,idx1) in secTitle'  @touchstart='titleLi(idx1,$event)'>{{item2}}</li>
 		    	</ul>
 		    </div>
 		    <div class="classify_title">
@@ -24,7 +21,12 @@
 	    		<div class="imgBox"><img v-lazy="erp.uploadUrl+item.listImg"></div>
 	    		<div class="list_title inaline">{{item.name}}</div>
 	    		<div class="price">￥{{item.price}}</div>
-	    	</router-link>	    	
+	    	</router-link>	
+			<router-link :to="{name:'detail',params:{_id:item._id}}" class='classify_content clearfix' v-for="(item,index) in responseData"  >
+	    		<div class="imgBox"><img v-lazy="erp.uploadUrl+item.listImg"></div>
+	    		<div class="list_title inaline">{{item.name}}</div>
+	    		<div class="price">￥{{item.price}}</div>
+	    	</router-link>	    	    	
 	    	
 	    	<div class="halvingLine">
 		-----------------  我是有底线的 ----------------- 
@@ -66,7 +68,7 @@
 				classifyTitle:null,
 				listTitle:null,
 				price:null,
-				message:['服装','鞋靴','运动','皮具','个护','居家','家电','数码'],
+				message:['服装','鞋靴','运动','皮具','居家','个护','家电','数码'],
 				secTitle:[]
 			}
 		},
@@ -89,16 +91,13 @@
 			scroll(event){
 				this.$refs.goTop.ctrlShow(event.target.scrollTop);
 			},
-			titleLi(event){
-				// console.log(333,this.responseData)
+			titleLi(idx1,e){
+				console.log(9999,this.secTitle[idx1])
+
 			},
 			hrefDetail(event){
 				console.log("==>")
 			}
-			// textItem(){
-			// 	this.secTitle.push(item2.type);
-
-			// }
 		},
 		mounted(){
 			var swiper = new Swiper('.swiper-container', {
@@ -112,14 +111,11 @@
 			})
 			let target = $('.b_products_list');
 			this.$refs.goTop.getScrollTarget(target);
-			// this.$store.dispath('classify_data',{
-
-			// })
 			$('.swiper-slide').eq(0).addClass('checked')
 		
 		},
 		created(){	
-			$.post(erp.baseUrl+'searchProductByclass',{classify:'服装'}).then(response => {
+			http.post(erp.baseUrl+'searchProductByclass',{classify:'服装'}).then(response => {
 				this.responseData = response;
 				this.classifyTitle = response[0].classify+response[0].brand;
 				this.responseData.map(function(item){

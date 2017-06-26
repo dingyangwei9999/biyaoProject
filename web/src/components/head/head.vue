@@ -1,6 +1,6 @@
 <template>
 	<div class="member-top">
-			<div class="member-back">
+			<div class="member-back"  @click='backGo'>
 				<i class="iconfont icon-danzuokuohao"></i>
 			</div>
 			<div class="member-msg">
@@ -19,6 +19,11 @@
 			}
 		},
 		methods:{
+			backGo:function(){
+				console.log(9999,this.$router)
+				this.$router.go(-1);
+				// history.go(-1)
+			}
 			
 		},
 		mounted(){
