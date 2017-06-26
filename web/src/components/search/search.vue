@@ -9,54 +9,71 @@
 			<div v-show='this.content' class="search-history">
 				<div class="search-warp">
 					<h4>历史记录<i class="iconfont icon-lajixiang"></i></h4>
-					<ul class="tianjia">
-						<li>666</li>
-						<li>666</li>
-						<li>666</li>
+					<ul class="tianjia" >
+						<li v-for='item in history'>{{item}}</li>
 					</ul>
 					<h4>热门搜索</h4>
 					<ul class="tianjia">
-						<li>运动</li>
-						<li>牛仔裤</li>
+						<li v-for='items in hot'>{{items}}</li>
 					</ul>
 				</div>
 			</div>
-			<ul v-show='!this.content'>
-				<li><router-link to="/">
+			<ul v-show='!this.content' class="b_ist" @scroll="scroll" >
+				<li v-for="(items,index) in searchData"><router-link :to="{name:'detail',params:{_id:items._id}}" >
 					<div>
-						<img src="../../assets/imgs/search0.jpg">
+						<img :src="erp.uploadUrl+items.listImg">
 					</div>
-					<p>大马士革钢切肉刀</p>
-					<p class="price">229</p>
+					<p class="title">{{items.name}}</p>
+					<p class="price">{{items.price}}</p>
 				</router-link></li>
-				<li><router-link to="/">
-					<div>
-						<img src="../../assets/imgs/search0.jpg">
-					</div>
-					<p class="title">大马士革钢切肉刀</p>
-					<p class="price">229</p>
-				</router-link></li>											
+				<!-- <img src="erp.uploadUrl+imgNull"> -->
+				<div class="halvingLine">
+		-----------------  我是有底线的 ----------------- 
+	    	</div>	
 			</ul>
+
 		</main>
+		<classify_backTop ref='goTop'></classify_backTop>
 	</div>
 </template>
 
 <script type="text/javascript">
 	import './search.scss'
 	import $ from 'jquery'
+	import { mapGetters, mapActions } from 'vuex'
+	import erp from '../../global.js'
+	import backTop from '../goTop/goTop.vue'
 
 	export default {
+		components:{
+			'classify_backTop':backTop
+
+		},		
 		data(){
 			return {
 				searchClose:false,
 				searchValue:null,
-				content:true
-
+				content:true,
+				searchData:[],
+				erp:erp,
+				hot:['运动','牛仔裤','男鞋','女装','男包','女包'],
+				history:['运动','牛仔裤'],
+				imgNull:null
 			}
 		},
 		methods: {	
+			scroll(event){
+				this.$refs.goTop.ctrlShow(event.target.scrollTop);
+			},			
 			startSearch:function(){
 				this.content=false;
+				// console.log(this.searchValue)
+				$.post(erp.baseUrl+'searchProduct',{classify:this.searchValue}).then(response => {
+					this.searchData = response;
+					if(!response[0]){
+						console.log('输入的数据找不到啊！！！！！')
+					}
+				})
 			},
 			inputFn:function(){
 				this.searchValue?this.searchClose=true : this. 	searchClose=false;
@@ -69,6 +86,11 @@
 				this.searchClose=false;
 				this.content=true;
 			}
+		},
+		mounted(){
+			let target = $('.b_list');
+			this.$refs.goTop.getScrollTarget(target);
 		}
+
 	}
 </script>

@@ -167,6 +167,25 @@ exports.Register = function(app){
 
       })
     });
+    //通过分类查询数据
+    app.post('/searchProductByclass',urlencodedParser,function(request,response){
+      
+      var obj= {}
+      var arr = []
+      arr.push(request.body.classify)
+      arr = arr.toString()
+      // var Reg = new RegExp(arr)
+      // obj.name = Reg
+      obj.classify=arr;
+      console.log(obj)
+      db.exists('prodata',{},[],function(result){
+
+        db.searchProductByclassify('prodata',obj,function(result){
+          response.send(result)
+        })
+
+      })
+    });
 
     //通过people分类获取专区
      app.post('/gainProductByarea',urlencodedParser,function(request,response){

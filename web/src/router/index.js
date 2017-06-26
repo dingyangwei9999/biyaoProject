@@ -24,8 +24,7 @@ import shoppingCartComponent from '../components/shoppingCart/shoppingCart.vue'
 import orderPageComponent from '../components/orderPage/orderPage.vue'
 
 
-Vue.use(VueRouter)
-
+Vue.use(VueRouter,)
 const router = new VueRouter({
 	routes: [{
 		path: '/',
