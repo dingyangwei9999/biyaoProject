@@ -7,7 +7,7 @@
 				<div class="goodstop clearfix">
 					<div class="goodstop_left clearfix">
 						<div class="goodstop_left_left"><span class="iconfont icon-dagou1" v-bind:class="{selectedStyle:obj.selected}" @click=selectedStyle(index,$event)></span></div>
-						<div class="goodspic"><img src="../../assets/imgs/11.jpg" height="247" width="106"></div>
+						<div class="goodspic"><img :src="upload+obj.productPreviewImg" height="247" width="106"></div>
 					</div>
 					<div class="goodstop_middle">
 						<p class="goodsname">{{obj.name}}</p>
@@ -35,13 +35,15 @@
 			<span class="quanxuan">全选</span>
 			<span class="heji">合计：</span>
 			<span class="shoppingCart_Footer_totalprice">￥{{totalPrice}}</span>
-			<span class="settlement">结算({{totalCount}})</span>
+			<span class="settlement" @click="$router.push({name:'orderPage'})">结算({{totalCount}})</span>
 		</div>
 	</div>
 </template>
 
 <script type="text/javascript">
 	import $ from 'jquery'
+	import Vue from 'vue'
+	import VueRouter from 'vue-router'
 	import './shoppingCart.scss'
 	import '../../assets/iconfont/iconfont.css'
 	import shoppingCartHeader from './shoppingCartHeader/shoppingCartHeader.vue'
@@ -58,8 +60,9 @@
 		},
 		data(){
 			return {
-				goods:[{color:'深灰色',selected:true,count:12,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'},{color:'亚麻色',selected:true,count:5,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'},{color:'深灰色',selected:true,count:12,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'},{color:'深灰色',selected:true,count:12,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'}],
-				api:'',
+				goods:[],
+				upload:erp.uploadUrl,
+				api:erp.account,
 				allSelected:'',
 				totalPrice:0,
 				totalCount:0,
@@ -79,6 +82,7 @@
 				
 				// 执行一次判断全选反选
 				this.judgeAll();
+				// this.transferData(idx);
 				
 			},
 			allSelectedStyle:function(e){
@@ -99,13 +103,30 @@
 
 				// 计算一下合计的数量价格
 				this.judgeQtyPrice();
+				
+				
 			},
 			delgoods:function(idx){
-				this.goods.splice(idx,1)
-				// 还要改变数据库信息
- 
-				// 计算一下合计的数量价格
-				this.judgeQtyPrice();
+				let userId = sessionStorage.getItem('id');
+				let obj = {};
+				obj.productId = this.goods[idx]._id;
+				obj.name = this.goods[idx].name;
+				obj.count = this.goods[idx].count;
+				obj.price = this.goods[idx].price;
+				obj.size = this.goods[idx].size;
+				obj.color = this.goods[idx].color;
+				obj.selected = this.goods[idx].selected;
+				obj.userId = userId;
+				$.post(this.api + 'delCart',{data: JSON.stringify(obj)},function(){
+					this.goods.splice(idx,1)
+					// 还要改变数据库信息
+	 
+					// 计算一下合计的数量价格
+					this.judgeQtyPrice();
+				})
+
+				
+				
 			},
 			increase:function(idx){
 				// 确定到某一个对象,需要增加他的count。。。。还要改变数据库信息
@@ -113,6 +134,7 @@
 
 				// 计算一下合计的数量价格
 				this.judgeQtyPrice();
+				this.transferData(idx);
 
 			},
 			decrease:function(idx){
@@ -122,6 +144,7 @@
 
 					// 计算一下合计的数量价格
 					this.judgeQtyPrice();
+					this.transferData(idx);
 				}
 			},
 			judgeAll:function(){
@@ -153,6 +176,23 @@
 				this.totalPrice=totalPrice;
 				this.totalCount=totalCount;
 			},
+			transferData:function(idx){
+				console.log('look',this.goods[idx].name)
+				let userId = sessionStorage.getItem('id');
+				let obj = {};
+				obj.productId = this.goods[idx]._id;
+				obj.name = this.goods[idx].name;
+				obj.count = this.goods[idx].count;
+				obj.price = this.goods[idx].price;
+				obj.size = this.goods[idx].size;
+				obj.color = this.goods[idx].color;
+				obj.selected = this.goods[idx].selected;
+				obj.userId = userId;
+				console.log(obj)
+				$.post(this.api + 'addCart',{data: JSON.stringify(obj)})
+				console.log({data: JSON.stringify(obj)})
+				console.log('跑了没')
+			}
 		},
 		created(){
 
@@ -162,17 +202,23 @@
 			// 		this.goods=response;
 			// 	})
 			// }
-			if(this.api){
-				$.post(this.api+'addCart',{},function(response){
-
-				}.bind(this))
-	
+			if(sessionStorage.getItem('id')){
+				if(this.api){
+					console.log('页面请求中ing')
+					$.post(this.api+'readCart',{userId:sessionStorage.getItem('id')},function(response){
+						console.log(response)
+						this.goods = response;
+					}.bind(this))
+				}
 			}
-
 			// 执行一次判断全选反选
 			setTimeout(function(){
 				this.judgeAll();
 			}.bind(this),100)	
-		}
+		},
 	}
 </script>
+
+
+<!-- productPreviewImg:"listImg-1498301901592.jpg" -->
+{{<!-- erp.uploadUrl+obj.productPreviewImg -->}}

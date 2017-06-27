@@ -17,7 +17,7 @@
 					</div>
 					<div class="orderGoods clearfix" v-for="obj in goods">
 						<div class="orderGoods_left">
-							<img src="../../assets/imgs/11.jpg">
+							<img :src="upload+obj.productPreviewImg">
 						</div>
 						<div class="orderGoods_middle">
 							<p>{{obj.name}}</p>
@@ -44,25 +44,29 @@
 				<p>发票信息<span>开具发票</span><span class="box" @click="selectedBox"></span></p>
 			</div>
 		</div>
-		<orderPageFooter></orderPageFooter>
+		<div class="orderPage_Footer clearfix">
+			<p>实付款：<span> ￥{{totalPrice}}</span></p>
+			<span class="orderPage_settlement">结算</span>
+		</div>
 	</div>
 </template>
 
 <script type="text/javascript">
+	import $ from 'jquery'
 	import orderPageHeader from './orderPageHeader/orderPageHeader.vue'
-	import orderPageFooter from './orderPageFooter/orderPageFooter.vue'
 	import'./orderPage.scss'
 	import '../../assets/iconfont/iconfont.css'
 	import http from '../../utils/HttpClient.js'
+	import erp from '../../global.js'
 	export default {
 		components:{
 			orderPageHeader:orderPageHeader,
-			orderPageFooter:orderPageFooter,
 		},
 		data(){
 			return {
-				goods:[{color:'深灰色',selected:true,count:12,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'},{color:'亚麻色',selected:true,count:5,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'},{color:'深灰色',selected:true,count:12,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'},{color:'深灰色',selected:true,count:12,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'}],
-				api:'',
+				goods:[],
+				upload:erp.uploadUrl,
+				api:erp.account,
 				classNameIsChange:false,
 				selectedbox:false,
 				totalPrice:0,
@@ -98,18 +102,44 @@
 				this.totalPrice=totalPrice;
 				this.totalCount=totalCount;
 			},
+			calculatePrice:function(){
+				let totalPrice=0;
+				this.goods.forEach(function(item){
+					if(item.selected){
+						totalPrice+=item.count*item.price
+					}
+				})
+				this.totalPrice=totalPrice;
+				console.log(totalPrice)
+			},
 		},
 		created(){
-			if(this.api){
-				http.post('api').then(response=>{
-					console.log(response)
-					this.goods=response;
+			// if(this.api){
+			// 	http.post('api').then(response=>{
+			// 		console.log(response)
+			// 		this.goods=response;
 
-					this.judgeQtyPrice()
-				})
+			// 		this.judgeQtyPrice()
+			// 	})
+			// }
+			// // 有数据后删掉此行
+			// this.judgeQtyPrice()
+			
+			if(sessionStorage.getItem('id')){
+				if(this.api){
+					console.log('页面请求中ing')
+					
+					$.post(this.api+'readCart',{userId:sessionStorage.getItem('id')},function(response){
+						console.log(response)
+						this.goods = response;
+
+						this.judgeQtyPrice();
+						this.calculatePrice();
+					}.bind(this))
+					
+					
+				}
 			}
-			// 有数据后删掉此行
-			this.judgeQtyPrice()
 		}
 	}
 </script>

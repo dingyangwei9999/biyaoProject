@@ -150,6 +150,27 @@ exports.Register = function(app){
         })      
     });
 
+    //在数据库中读取购物车的信息
+    app.post('/readCart', urlencodedParser, function(request, response){
+        // 前端传数据要求 ： {userId:sessionStorage.getItem('id')}
+        db.get('cart',request.body, function(result){     
+            response.send(result.data)
+        })      
+    });
+
+    //在数据库中删除购物车的信息
+    app.post('/delCart', urlencodedParser, function(request, response){
+        let data = JSON.parse(request.body.data);
+        let dataUpdate = {};
+        dataUpdate.userId = data.userId;
+        dataUpdate.productsId = data.productsId;
+        dataUpdate.size = data.size;
+        dataUpdate.color = data.color;
+        db.del('cart',dataUpdate, function(result){     
+            response.send(result.data)
+        })      
+    });
+
     app.post('/memberCenter',urlencodedParser,function(request,response){
             console.log(requset.body,"===>",response.body)
             DB.get('sexUser',{username:request.body.username}),

@@ -6,6 +6,8 @@
 </template>
 
 <script type="text/javascript">
+	import $ from 'jquery'
+	import erp from '../../../global.js'
 	import './orderPageFooter.scss'
 	import '../../../assets/iconfont/iconfont.css'
 
@@ -16,7 +18,7 @@
 		data(){
 			return {
 				goods:[{color:'深灰色',selected:true,count:12,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'},{color:'亚麻色',selected:true,count:5,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'},{color:'深灰色',selected:true,count:12,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'},{color:'深灰色',selected:true,count:12,name:'softal年汤奶昔短袖PLPO山',price:198,size:'S'}],
-				api:'',
+				api:erp.account,
 				classNameIsChange:false,
 				totalPrice:0,
 
@@ -41,17 +43,28 @@
 			},
 		},
 		created(){
-			if(this.api){
-				http.post('api').then(response=>{
-					console.log(response)
-					this.goods=response;
+			// if(this.api){
+			// 	http.post('api').then(response=>{
+			// 		console.log(response)
+			// 		this.goods=response;
 
-					this.calculatePrice();
-				})
+			// 		this.calculatePrice();
+			// 	})
+			// }
+			// // 有数据之后删掉此行
+			// this.calculatePrice();
+
+			if(sessionStorage.getItem('id')){
+				if(this.api){
+					console.log('页面请求中ing')
+					$.post(this.api+'readCart',{userId:sessionStorage.getItem('id')},function(response){
+						console.log(response)
+						this.goods = response;
+
+						this.judgeQtyPrice();
+					}.bind(this))
+				}
 			}
-			// 有数据之后删掉此行
-			this.calculatePrice();
-
 
 		}
 	}

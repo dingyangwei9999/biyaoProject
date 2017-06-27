@@ -18,7 +18,7 @@ const mutations = {
 			type:'post',
 			data:{username,psw},
 			dataType:'json',
-			url:'http://10.3.133.20:888/' + 'register',
+			url:erp.account + 'register',
 			success:function(response){
 				console.log(response)
 				console.log(response.status)
