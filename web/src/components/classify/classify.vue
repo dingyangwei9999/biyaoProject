@@ -69,7 +69,8 @@
 				listTitle:null,
 				price:null,
 				message:['服装','鞋靴','运动','皮具','居家','个护','家电','数码'],
-				secTitle:[]
+				secTitle:[],
+				indexCome:'服装'
 			}
 		},
 		methods:{
@@ -123,7 +124,8 @@
 							this.secTitle.push(item.type)
 						}
 				}.bind(this))
-			})				
+			})
+					
 		}
 		// watch(){
 		// 	responseData:function(){
