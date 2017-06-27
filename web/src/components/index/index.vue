@@ -21,11 +21,11 @@
 			<!-- 第一个区域块 -->
 			<div class="indexCategoryArea clearfix">
 				<div class="left">
-					<img src="/src/assets/imgs/shidian.jpg">
+					<img src="src/assets/imgs/shidian.jpg">
 				</div>
 				<div class="right">
-					<img src="/src/assets/imgs/indexCategoryArea0.jpg" height="270" width="308" alt="">
-					<img src="/src/assets/imgs/indexCategoryArea1.jpg" alt="">
+					<img src="src/assets/imgs/indexCategoryArea0.jpg" height="270" width="308" alt="">
+					<img src="src/assets/imgs/indexCategoryArea1.jpg" alt="">
 				</div>
 			</div>
 			<!-- 厂商区域 -->
@@ -35,7 +35,7 @@
 				<h3>{{classify[index]}}</h3>
 					<!-- 大图 -->
 					<div class="img-box">
-						<img src="/src/assets/imgs/guangxueyanjing.jpg">
+						<img src="src/assets/imgs/guangxueyanjing.jpg">
 						<div class="brand-box">
 							<!-- 文字部分 -->
 							<div class="brand">
@@ -80,7 +80,7 @@
 			return {
 				erp: erp,
 				// 模拟数据
-				bannerImgs: ['/src/assets/imgs/banner0.jpg','/src/assets/imgs/banner1.jpg','/src/assets/imgs/banner2.jpg','/src/assets/imgs/banner3.jpg'],
+				bannerImgs: ['src/assets/imgs/banner0.jpg','src/assets/imgs/banner1.jpg','src/assets/imgs/banner2.jpg','src/assets/imgs/banner3.jpg'],
 				// 模拟数据
 				classify:['服装', '鞋靴', '运动', '皮具', '居家'],
 				response: []
