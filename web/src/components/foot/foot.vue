@@ -36,18 +36,22 @@
 					$('#classify i').css('color','#B768A5')	
 			}
 			var footRouter = window.location.hash.slice(2);
+			
 			switch (footRouter){
 				case "classify":
 					this.showFoot;
 					break;
 				case "member":
 				 	this.showFoot;
+
+					break;
 				case "shopcart":
 					this.showFoot;
 					break;
 				case "":
 					this.showFoot;
 			}
+			return
 		}
 	}
 </script>

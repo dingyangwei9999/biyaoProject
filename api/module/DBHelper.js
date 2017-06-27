@@ -70,7 +70,7 @@ module.exports = {
             db.collection(_collection,function(err,collection){
                  console.log(result)
                  console.log(newData)
-                collection.update(result,{$set:newData},function(err,result){
+                collection.update(result,{$set:newData},function(resulterror,result){
                     if(err){
                        _callback(ApiResult(false, null, resulterror));
                     }else{

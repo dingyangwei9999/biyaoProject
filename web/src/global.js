@@ -1,7 +1,7 @@
 const erp = erp || {};
 
 
-var base = 'http://10.3.133.81:8787/';
+var base = 'http://localhost:888/';
 erp.baseUrl = base;
 erp.webappUrl = base+'webapp/';
 erp.htmlUrl = base+'webapp/html/';

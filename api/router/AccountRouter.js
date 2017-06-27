@@ -131,7 +131,7 @@ exports.Register = function(app){
                     response.send(result)
                 })
             } else {
-                db.modify('cart',result.data,response.body,function(result){
+                db.modify('cart',result.data[0],response.body,function(result){
                     response.send(result)
                 })
             }
