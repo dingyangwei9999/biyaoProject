@@ -23,6 +23,7 @@ import UpdataPsw from '../components/updatePsw/updatapsw.vue'
 import shoppingCartComponent from '../components/shoppingCart/shoppingCart.vue'
 import orderPageComponent from '../components/orderPage/orderPage.vue'
 
+import Order from '../components/order/order.vue'
 import Address from '../components/addressList/addressList.vue'
 import AddressAdd from '../components/addressAdd/addressAdd.vue'
 
@@ -87,6 +88,19 @@ const router = new VueRouter({
 		path:'/message',
 		name:'message',
 		component:MineMessage
+	},{
+		path: '/shoppingCart',
+		name: 'shoppingCart',
+		component: shoppingCartComponent
+	},{
+		path: '/orderPage',
+		name: 'orderPage',
+		component: orderPageComponent
+
+	},{
+		path:'/order/orderlist',
+		name:'orderlist',
+		component:Order
 	}]
 })
 

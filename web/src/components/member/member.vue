@@ -7,7 +7,9 @@
 			<div class="member-msg">
 				<p>个人中心</p>
 			</div>
-			<div class="member-menu"></div>
+			<div class="member-menu" @click="delte">
+				退出
+			</div>
 		</div>
 		<div class="member-main">
 			<div class="m-title">
@@ -18,7 +20,7 @@
 					<p class="member-name">你是一个傻子</p>
 				</div>
 				<div class="m-mz">
-					<div class="waitPay">
+					<div class="waitPay" @click="fukuan">
 						<p>
 							<i class="iconfont icon-daifukuan"></i>
 							待付款
@@ -33,7 +35,7 @@
 				</div>
 			</div>
 			<div class="all-data">
-				<div class="myOrder">
+				<div class="myOrder" @click="order">
 					<span>我的订单</span>
 					<i class="iconfont icon-danyoukuohao"></i>
 				</div>
@@ -54,7 +56,7 @@
 					<i class="iconfont icon-danyoukuohao"></i>
 				</div>
 				<div class="need">
-					关注'&nbsp;还要&nbsp;'，微信服务号获取最新消息
+					关注'&nbsp;我要&nbsp;'，微信服务号获取最新消息
 				</div>
 			</div>
 		</div>
@@ -65,11 +67,17 @@
 <script>
 	import './member.scss';
 	import Footer from '../foot/foot.vue'
+	import router from '../../router/index'
 
 
 	export default{
 		components:{
 			'foot':Footer
+		},
+		data:function(){
+			return {
+				sessionId:null
+			}
 		},
 		methods:{
 			back:function(){
@@ -83,7 +91,24 @@
 			},
 			message:function(){
 				this.$store.dispatch('msg')
+			},
+			order:function(){
+				this.$store.dispatch('order')
+			},
+			fukuan:function(){
+				this.$store.dispatch('orders')
+			},
+			delte:function(){
+				
+				window.sessionStorage.removeItem('id')
+				router.push({name:'logins'})
 			}
+		},
+		created:function(){
+			this.sessionId = window.sessionStorage.getItem('id')
+				if(!this.sessionId){
+					router.push({name:'logins'})
+				}
 		}
 	}
 </script>	
