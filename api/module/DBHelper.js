@@ -82,11 +82,26 @@ module.exports = {
             db.close();
         })
        
-    }
+    },
 
     //在数据库中写入购物车的信息
     
+
+    //删除
+    del: function(_collection, _condition, _callback){
+       
+        db.open(function(dberror){
+            if(dberror){
+                _callback(ApiResult(false, null, dberror));
+                return;
+            }
+            db.collection(_collection,function(err,collection){
+                collection.remove(_condition,function(err,result){
+                    _callback(ApiResult(true, null, result))
+                })
+            })
+            db.close();
+        })
+    },
+    
 }
-
-
- 
