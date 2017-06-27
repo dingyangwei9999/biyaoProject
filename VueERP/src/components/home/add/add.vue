@@ -15,25 +15,25 @@
 					</div>
 				<div class="form-group col-sm-4">
 					<label for="exampleInputName2">商品价格:&nbsp;</label>
-					<input type="text" class="form-control " id="exampleInputName2" name="price" v-model="dataform.price">
+					<input type="text" class="form-control required" id="exampleInputName2" name="price" v-model="dataform.price">
 					</div>
 				<div class="form-group col-sm-4">
 					<label for="exampleInputName2">销量:&nbsp;</label>
-					<input type="text" class="form-control " id="exampleInputName2" name="sales" v-model="dataform.sales">
+					<input type="text" class="form-control required" id="exampleInputName2" name="sales" v-model="dataform.sales">
 				</div>
 				<div class="form-group col-sm-4">
 					<label for="exampleInputName2">库存:&nbsp;</label>
-					<input type="text" class="form-control " id="exampleInputName2" name="stock" v-model="dataform.stock">
+					<input type="text" class="form-control required" id="exampleInputName2" name="stock" v-model="dataform.stock">
 				</div>
 				<div class="form-group col-sm-4">
 					<label for="exampleInputName2">品牌:&nbsp;</label>
-					<input type="text" class="form-control " id="exampleInputName2" name="brand" v-model="dataform.brand">
+					<input type="text" class="form-control required" id="exampleInputName2" name="brand" v-model="dataform.brand">
 				</div>
 				<div class="form-group col-sm-4">
 					<label for="exampleInputName2">分类：&nbsp;</label>
 					<!-- <input type="text" class="form-control " id="exampleInputName2" name="classify" v-model="dataform.classify"> -->
 				
-					<select class="form-control" name="classify" v-model="dataform.classify">
+					<select class="form-control required" name="classify" v-model="dataform.classify">
 					  <option>服装</option>
 					  <option>鞋靴</option>
 					  <option>运动</option>

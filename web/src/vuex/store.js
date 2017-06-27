@@ -14,7 +14,7 @@ import modify from '../components/modifyPsw/modify'
 import updataPsw from '../components/updatePsw/updataPsw'
 import member from '../components/member/member'
 import address from '../components/addressList/addressList'
-import addressAdd from '../components/addressAdd/adddressAdd'
+import addressAdd from '../components/addressAdd/addressAdd'
 
 
 Vue.use(Vuex)

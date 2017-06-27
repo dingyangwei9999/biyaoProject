@@ -205,6 +205,7 @@
 			if(sessionStorage.getItem('id')){
 				if(this.api){
 					console.log('页面请求中ing')
+					console.log(this.api+'readCart')
 					$.post(this.api+'readCart',{userId:sessionStorage.getItem('id')},function(response){
 						console.log(11111111111111,response)
 						this.goods = response;

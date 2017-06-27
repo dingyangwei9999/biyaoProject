@@ -205,7 +205,7 @@
 				obj.selected = true;
 				obj.userId = userId;
 				console.log(obj);
-				// http.post(erp.account + 'addCart',{data: JSON.stringify(obj)})
+				http.post(erp.account + 'addCart',{data: JSON.stringify(obj)})
 			},
 			//显示隐藏选择规格尺码弹出框
 			showInfoBox(){
