@@ -1,18 +1,18 @@
 <template>
 	<div class="biyao_foot">
-		<router-link to id='home' class='footCss'>
+		<router-link :to = "{path:'/'}" id='home' class='footCss'>
 			<i class='iconfont icon-shouye-copy'></i>
 			<div>首页</div>
 		</router-link>
-		<router-link to  id='classify'  class='footCss'>
+		<router-link :to ="{path:'/classify'}" id='classify'  class='footCss'>
 			<i class='iconfont icon-category'></i>
 			<div>分类</div>
 		</router-link>		
-		<router-link to id='shopcart' class='footCss'>
+		<router-link :to="{path:'/shoppingCart'}" id='shopcart' class='footCss'>
 			<i class='iconfont icon-gouwuche'></i>
 			<div>购物车</div>
 		</router-link>	
-		<router-link to id='my' class='footCss'>
+		<router-link :to ="{path:'/member'}"  id='my' class='footCss'>
 			<i class='iconfont icon-wode'></i>
 			<div>个人中心</div>
 		</router-link>				
@@ -31,25 +31,25 @@
 			
 		},
 		mounted(){
-			showFoot:{
-					$('#classify').css('color','#B768A5')
-					$('#classify i').css('color','#B768A5')	
-			}
 			var footRouter = window.location.hash.slice(2);
 			
 			switch (footRouter){
 				case "classify":
-					this.showFoot;
-					break;
-				case "member":
-				 	this.showFoot;
-
+					$('#classify').css('color','#B768A5')
+					$('#classify i').css('color','#B768A5')	
 					break;
 				case "shopcart":
-					this.showFoot;
+					$('#shopcart').css('color','#B768A5')
+					$('#shopcart i').css('color','#B768A5')
 					break;
 				case "":
-					this.showFoot;
+					$('#home').css('color','#B768A5')
+					$('#home i').css('color','#B768A5')					
+					break;
+				default:
+					$('#my').css('color','#B768A5')
+					$('#my i').css('color','#B768A5')
+				break;				
 			}
 			return
 		}

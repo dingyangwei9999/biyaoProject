@@ -72,7 +72,8 @@ module.exports = {
                  console.log(newData)
                 collection.update(result,{$set:newData},function(resulterror,result){
                     if(err){
-                       _callback(ApiResult(false, null, resulterror));
+                        console.log(err)
+                       _callback(ApiResult(false, null, err));
                     }else{
                          _callback(ApiResult(true, null, result));
                     }

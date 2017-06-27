@@ -7,6 +7,7 @@
 	width: 100%;
 	height: 100%;
 	background-color: #F5F5F5;
+	// 头部标题
 	header{
 		$height: 42px;
 		height: $height;
@@ -36,9 +37,11 @@
 			white-space: nowrap;
 		}
 	}
+	// 主体部分，窗口滚动
 	main{
 		flex:1;
 		overflow-x:hidden;
+			// 轮播图
 			.swiper-container{
 				width:100%;
 				background-color: #ccc;
@@ -55,11 +58,13 @@
 					left:auto;
 				}
 		}
+		// 商品信息
 		.product-msg{
 			background-color: #fff;
 			padding: 10px;
 			box-shadow: 0 0 10px #aaa;
 			margin-bottom: 15px;
+			// 价格一类
 			.top{
 				$height:35px;
 				height:$height;
@@ -80,6 +85,7 @@
 					line-height: $height;
 				}
 			}
+			// 点击部分
 			h2{
 				height:40px;
 				font-size: 14px;
@@ -87,6 +93,7 @@
 				margin:0;
 				border-bottom: 1px solid #ccc;
 			}
+			// 评分区
 			.grade{
 				height:60px;
 				display: flex;
@@ -105,6 +112,7 @@
 				}
 			}
 		}
+		// 商品描述信息
 		.describe{
 			background-color: #EEE;
 		    padding: 13px 15px;
@@ -127,6 +135,7 @@
 		    	flex:1;
 		    }
 		}
+		// 列表图
 		.listImgs{
 			img{
 				width:100%;
@@ -134,6 +143,7 @@
 			}
 		}
 	}
+	// 底部按钮
 	footer{
 		display: flex;
 		background-color: #fff;
@@ -170,15 +180,24 @@
 			}			
 		}
 	}
+	//选择尺寸弹出框背景遮罩
+	.shadeFull{
+		position: fixed;
+		width:100%;
+		height:100%;
+		z-index: 10;
+		background-color: rgba(0,0,0,.5);
+	}
 	//选择尺寸弹出框
 	.info-box{
 		color:#555;
 		position: fixed;
-		z-index: 10;
+		z-index: 11;
 		bottom:0;
 		// height:350px;
 		width:100%;
 		background-color: #fff;
+		// 顶部
 		.top{
 			padding:10px;
 			border-bottom: 1px solid #ccc;
@@ -218,15 +237,20 @@
 				line-height: 40px;
 			}
 		}
+		// 颜色 尺码
 		.color, .size{
 			span{
-				border:1px solid $main-color;
+				border:1px solid #fff;
 				padding:5px 25px;
 				display: inline-block;
 				margin:0 6px 10px 0;
 				color:#333;
+				&.actived{
+					border:1px solid $main-color;
+				}
 			}
 		}
+		// 购物数量
 		.buy-num{
 			$height: 56px;
 			height: $height;
@@ -254,6 +278,7 @@
 				}
 			}
 		}	
+		// 底部按钮
 		.b-affirm{
 			padding:8px 10px;
 			span{
@@ -286,4 +311,28 @@
 			}
 		}
 	}
+}
+
+//过渡动画 遮罩
+.shadeFullAnimate-enter-active {
+	transition: all .2s ease;
+}
+.shadeFullAnimate-leave-active {
+	transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.shadeFullAnimate-enter, .shadeFullAnimate-leave-active {
+	// transform: translateY(110px);
+	opacity: 0;
+}
+
+// 过渡动画 选择规格尺码弹出框
+.info-boxAnimate-enter-active {
+	transition: all .2s ease;
+}
+.info-boxAnimate-leave-active {
+	transition: all .3s ease;
+}
+.info-boxAnimate-enter, .info-boxAnimate-leave-active {
+	transform:translateY(200px) scale(.5,.5);
+	opacity: 0;
 }
