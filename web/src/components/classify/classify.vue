@@ -92,7 +92,7 @@
 				this.$refs.goTop.ctrlShow(event.target.scrollTop);
 			},
 			titleLi(idx1,e){
-				console.log(9999,this.secTitle[idx1])
+				// console.log(9999,this.secTitle[idx1])
 
 			},
 			hrefDetail(event){

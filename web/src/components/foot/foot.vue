@@ -12,10 +12,7 @@
 			<i class='iconfont icon-gouwuche'></i>
 			<div>购物车</div>
 		</router-link>	
-		<router-link :to ="{path:'/member'}"  id='my' class='footCss'>
-			<i class='iconfont icon-wode'></i>
-			<div>个人中心</div>
-		</router-link>				
+			
 	</div>
 </template>
 <script type="text/javascript">
@@ -25,14 +22,15 @@
 	export default{
 
 		data:function(){
-			return{}
+			return{
+
+			}
 		},
 		methods:{
-			
 		},
 		mounted(){
+			this.indexSec = window.sessionStorage.getItem('id');
 			var footRouter = window.location.hash.slice(2);
-			
 			switch (footRouter){
 				case "classify":
 					$('#classify').css('color','#B768A5')
