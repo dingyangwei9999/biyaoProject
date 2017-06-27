@@ -123,7 +123,7 @@
 	 
 					// 计算一下合计的数量价格
 					this.judgeQtyPrice();
-				})
+				}.bind(this))
 
 				
 				
@@ -206,7 +206,7 @@
 				if(this.api){
 					console.log('页面请求中ing')
 					$.post(this.api+'readCart',{userId:sessionStorage.getItem('id')},function(response){
-						console.log(response)
+						console.log(11111111111111,response)
 						this.goods = response;
 					}.bind(this))
 				}
