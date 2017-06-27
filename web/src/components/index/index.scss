@@ -24,6 +24,7 @@
 				line-height:$height;
 				padding:0 0 0 5px;
 				font-size: 14px;
+				color:gray;
 			}
 			span{
 				line-height:$height;
@@ -152,9 +153,5 @@
 				}
 			}
 		}
-	}
-	footer{
-		height:50px;
-		background-color: gray;
 	}
 }

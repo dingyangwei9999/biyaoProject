@@ -2,6 +2,7 @@
 	<div class="detail-box">
 		<header>
 			<a href="javascript:history.back(1)" ><i class="iconfont icon-danzuokuohao"></i></a>
+			<!-- 标题 -->
 			<h2>{{response.name}}</h2>
 		</header>
 		<main @scroll="scroll">
@@ -15,6 +16,7 @@
 			    </div>
 			    <div class="swiper-pagination"></div>
 			</div>
+			<!-- 商品信息 -->
 			<div class="product-msg">
 				<div class="top">
 					<span class="price">{{response.price}}</span>
@@ -51,10 +53,11 @@
 			<span class="buy" @touchstart="showInfoBox">立即购买</span>
 		</footer>
 		<goTop ref="goTop"></goTop>
-		<!-- 选择规格尺码弹出框 -->
+		<!-- 选择规格尺码背景遮罩 -->
 		<transition name="shadeFullAnimate">
 		<div class="shadeFull" v-show="infoBoxShow"  @touchstart="showInfoBox"></div>
 		</transition>
+		<!-- 选择规格尺码弹出框 -->
 		<transition name="info-boxAnimate">
 		<div class="info-box" v-show="infoBoxShow">
 			<div class="top clearfix">
@@ -85,12 +88,11 @@
 				</div>
 			</div>
 			<div class="b-affirm clearfix">
-				<span class="b-goCar"><i class="iconfont icon-gouwuche"></i></span><!-- 
+				<router-link to="/shoppingCart"><span class="b-goCar"><i class="iconfont icon-gouwuche"></i></span></router-link><!-- 
 				--><span class="b-addCar" @touchstart="addCar">确定</span>				
 			</div>
 		</div>
 		</transition>
-		<!-- {{this.$store.state.detail.response}} -->
 	</div>
 </template>
 
@@ -153,9 +155,6 @@
 				this.qualityGrade = (Math.random()*2+3).toFixed(1);
 				this.serviceGrade = (Math.random()*2+3).toFixed(1);
 			});	
-			// http.post(erp.baseUrl + 'gainProductById',{_id:'594e332602885618ac2da3a9'}).then(response => {
-			// 	console.log(response);
-			// });
 		},
 		computed:{
 		},
@@ -179,6 +178,7 @@
 				// });		
 						
 			},
+			// 加入购物车
 			addCar(){
 				let userId = sessionStorage.getItem('id');
 				let obj = {};
@@ -193,7 +193,7 @@
 				console.log(obj, userId);
 				http.post(erp.account + 'addCart',{data: JSON.stringify(obj)})
 			},
-			//显示隐藏规格尺码
+			//显示隐藏选择规格尺码弹出框
 			showInfoBox(){
 				this.infoBoxShow = !this.infoBoxShow;
 			},
@@ -206,11 +206,13 @@
 					++this.buyNum;
 				}
 			},
+			// 选择指定颜色
 			colorHandle(index){
 				this.chooseColor = this.color[index];
 				this.checkedColorMark = index;
 				console.log(this.chooseColor,this.$refs);
 			},
+			// 选择指定尺码
 			sizeHandle(index){
 				this.chooseSize = this.size[index];
 				this.checkedSizeMark = index;
@@ -218,6 +220,7 @@
 			}
 		},
 		mounted(){
+			// 实例化轮播图
 			var mySwiper = new Swiper ('.swiper-container', {
 				autoplay: 3000,
 				loop: true,
