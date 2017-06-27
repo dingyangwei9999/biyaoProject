@@ -48,7 +48,7 @@
 		</main>
 		<!-- 底部3个按钮 -->
 		<footer>
-			<span class="goCar"><i class="iconfont icon-gouwuche"></i></span>
+			<span class="goCar" @touchstart="$router.push({'name':'shoppingCart'})"><i class="iconfont icon-gouwuche"></i></span>
 			<span class="addCar" @touchstart="showInfoBox">加入购物车</span>
 			<span class="buy" @touchstart="showInfoBox">立即购买</span>
 		</footer>
@@ -61,7 +61,7 @@
 		<transition name="info-boxAnimate">
 		<div class="info-box" v-show="infoBoxShow">
 			<div class="top clearfix">
-				<div class="simg-box"><img src="../../assets/imgs/detailbanner.jpg"></div>
+				<div class="simg-box"><img :src="erp.uploadUrl + productPreviewImg"></div>
 				<div class="t-box">
 					<p class="info-price">189</p>
 					<p class="cycle">生产周期18天</p>
@@ -103,6 +103,7 @@
 
 	import $ from 'jquery'
 	import '../../assets/jquery-swiper/swiper-3.4.2.min.js'
+	import router from '../../router/index.js'
 	import http from '../../utils/HttpClient.js'
 	import erp from '../../global.js'
 	import goTop from '../goTop/goTop.vue'
@@ -115,6 +116,7 @@
 				checkedColorMark: 0,
 				checkedSizeMark: 0,
 				infoBoxShow: false,
+				productPreviewImg:null,
 				buyNum: 1,
 				response: {},
 				bannerImgs: [],
@@ -142,6 +144,7 @@
 				response = response[0];
 				this.response = response;
 				this.bannerImgs = response.bannerImg;
+				this.productPreviewImg = response.listImg;
 				this.listImgs = response.detailImg;
 				this.color = response.color.split('、');
 				this.size = response.size.split(' ');
@@ -180,9 +183,20 @@
 			},
 			// 加入购物车
 			addCar(){
+
 				let userId = sessionStorage.getItem('id');
+				console.log(userId,'=====')
+				if(!userId){
+					console.log('enter')
+					let res = confirm('您还未登录，是否去登陆？');
+					if(res){
+						router.push({'name':'logins'});
+					}
+					return;
+				}
 				let obj = {};
 				obj.productId = this._id;
+				obj.productPreviewImg = this.productPreviewImg;
 				obj.name = this.name;
 				obj.count = this.buyNum;
 				obj.price = this.price;
@@ -190,8 +204,8 @@
 				obj.color = this.chooseColor;
 				obj.selected = true;
 				obj.userId = userId;
-				console.log(obj, userId);
-				http.post(erp.account + 'addCart',{data: JSON.stringify(obj)})
+				console.log(obj);
+				// http.post(erp.account + 'addCart',{data: JSON.stringify(obj)})
 			},
 			//显示隐藏选择规格尺码弹出框
 			showInfoBox(){
