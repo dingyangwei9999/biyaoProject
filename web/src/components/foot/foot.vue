@@ -12,25 +12,39 @@
 			<i class='iconfont icon-gouwuche'></i>
 			<div>购物车</div>
 		</router-link>	
-		<router-link :to ="{path:'/member'}"  id='my' class='footCss'>
+		<!-- <router-link :to ="{path:'/member'}"  id='my' class='footCss'>
 			<i class='iconfont icon-wode'></i>
 			<div>个人中心</div>
-		</router-link>				
+		</router-link>	 -->	
+		<div id='my' class='footCss' @click='clickIf'>
+			<i class='iconfont icon-wode'></i>
+			<div>个人中心</div>
+		</div>		
 	</div>
 </template>
 <script type="text/javascript">
 	import './foot.scss'
 	import { mapGetters, mapActions } from 'vuex'
 	import $ from 'jquery'
+	import router from '../../router/index'
 	export default{
-
 		data:function(){
-			return{}
+			return{
+				sessionId:null
+			}
 		},
 		methods:{
+			clickIf:function(){
+				if(!this.sessionId){
+					router.push({name:'logins'})
+				}else{
+					router.push({name:'member'})
+				}
+			}
 			
 		},
 		mounted(){
+			this.sessionId = window.sessionStorage.getItem('id');
 			var footRouter = window.location.hash.slice(2);
 			switch (footRouter){
 				case "classify":

@@ -57,7 +57,7 @@
 				content:true,
 				searchData:[],
 				erp:erp,
-				hot:['运动','牛仔裤','男鞋','女装','男包','女包'],
+				hot:['运动','运动鞋','男鞋','女装','男包','女包','女鞋'],
 				history:[],
 				imgNull:null
 			}
@@ -91,24 +91,35 @@
 				// console.log(idx,this.hot[idx])
 				if(!(this.history.indexOf(this.hot[idx])>-1)){
 					this.history.push(this.hot[idx])
+					// window.sessionStorage.setItem('searchData',JSON.stringify(this.history))
+					// let sesiongSearch = window.sessionStorage.getItem('searchData');
+					// console.log(sesiongSearch,"=====>")
+					// this.history = sesiongSearch;
 				}
 				let shuzhi = this.hot[idx]
-				console.log(this.hot[idx],shuzhi)
 				http.post(erp.baseUrl+'searchProduct',{classify:shuzhi}).then(response => {
-					console.log(response)
 					this.searchData = response;
 				})	
 				this.content=false;			
 
 			},
 			del:function(){
-				this.history=[]
+				window.sessionStorage.removeItem('searchData')
+				this.history=[];			
+
 			}
 		},
 		mounted(){
 			let target = $('.b_list');
 			this.$refs.goTop.getScrollTarget(target);
+			let indexCome=this.$route.params.keyword;
+			if(indexCome){console.log(indexCome,'======>')	
+				console.log(999)
+				contenthu:false;
+				http.post(erp.baseUrl+'searchProductByclass',{classify:indexCome}).then(response => {
+					this.responseData = response;
+				})
+			}
 		}
-
 	}
 </script>
