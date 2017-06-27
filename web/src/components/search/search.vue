@@ -114,8 +114,8 @@
 			this.$refs.goTop.getScrollTarget(target);
 			let indexCome=this.$route.params.keyword;
 			if(indexCome){console.log(indexCome,'======>')	
-				contenthu:false;
 				http.post(erp.baseUrl+'searchProductByclass',{classify:indexCome}).then(response => {
+					contenthu:false;
 					this.responseData = response;
 				})
 			}
