@@ -8,7 +8,7 @@ const state = {
 
 const mutations = {
 	getIndexFirstData: (data, formData) => {
-		console.log(formData)
+		// console.log(formData)
 		// formData.callback();
 		http.post(erp.baseUrl + 'searchProductByclass', formData.requestData).then(
 			response => {

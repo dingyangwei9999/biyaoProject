@@ -28,6 +28,7 @@ import AddressAdd from '../components/addressAdd/addressAdd.vue'
 
 
 
+
 Vue.use(VueRouter,)
 const router = new VueRouter({
 	routes: [{
@@ -43,7 +44,7 @@ const router = new VueRouter({
 		name: 'detail',
 		component: DetailComponent
 	},{
-		path: '/search',
+		path: '/search/:keyword',
 		name: 'search',
 		component: SearchComponent,
 	},{
