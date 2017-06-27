@@ -61,7 +61,8 @@ var delByProductsObj = function(_collection,data,callback){
 //修改指定ID的商品数据
 
 var changeProduct = function(_collection,item,newData){
-		
+		// console.log(item)
+  //       console.log(newData)
 		db.collection(_collection,function(err,collection){
 			collection.update(item,{$set:newData},function(err,result){
 				if(err){
@@ -117,6 +118,24 @@ var searchProductByarea=function(_collection,obj,callback){
 		}
 	})
 }
+// var getProByClassify = function(_collection, typename, callback){
+
+//         db.collection(_collection, function(error, collection){
+//             if(error){
+//                 console.log(error)
+//             } else {
+//                 collection.find({"classify":typename}).toArray(function(err, docs){
+//                         // var reg = new RegExp("^.*"+keyword+"\.*$","i");
+//                         // collection.find({name:{$regex:reg}}).toArray(function(err, docs){
+//                         //  response.send(docs);
+//                     callback(docs);
+//                 });
+//             }
+//         });
+
+// };
+
+
 
 //查询根据条件商品，可以排序 ，可以限制数量，用于分页查询
 var getProductFilter = function(_collection,obj1, data, Reg,skip,limit, sort,callback){
@@ -166,3 +185,4 @@ exports.gainProduct = gainProduct;
 exports.searchProductByclassify = searchProductByclassify;
 exports.searchProductByarea = searchProductByarea;
 exports.getProductFilter = getProductFilter;
+// exports.getProByClassify = getProByClassify;

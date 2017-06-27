@@ -13,6 +13,9 @@
 	h4{
 		font-size: 13px;
 		font-weight: 700;
+		button{
+			margin-left: 10px;
+		}
 	}
 }
 .goodsTable{
@@ -28,9 +31,31 @@
 		th{
 			text-align: center;
 			word-break:keep-all;
+			vertical-align: middle;
+
 		}
 		td{
 // word-break:keep-all;
+			vertical-align: middle;
+			line-height: 100%;
+			.deleateBtn{
+				margin-left: 10px;
+			}
 		}
 	}
+}
+
+.changeWindow{
+	background-color:#fff;
+	border:3px solid #19a085;
+	border-radius:10px;
+	width: 1180px;
+	height: 600px;
+	position: fixed;
+	padding:20px 20px;
+	left: 50px;
+	top: 42px;
+	overflow: auto;
+
+
 }
