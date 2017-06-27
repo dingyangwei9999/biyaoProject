@@ -113,12 +113,16 @@
 			let target = $('.b_list');
 			this.$refs.goTop.getScrollTarget(target);
 			let indexCome=this.$route.params.keyword;
+			let self = this;
 			if(indexCome){console.log(indexCome,'======>')	
 				http.post(erp.baseUrl+'searchProductByclass',{classify:indexCome}).then(response => {
-					contenthu:false;
-					this.responseData = response;
+					self.searchData = response;
+					self.content=false;
 				})
 			}
+		},
+		create(){
+
 		}
 	}
 </script>
