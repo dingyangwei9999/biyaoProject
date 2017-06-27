@@ -32,6 +32,7 @@
 		},
 		mounted(){
 			var footRouter = window.location.hash.slice(2);
+			
 			switch (footRouter){
 				case "classify":
 					$('#classify').css('color','#B768A5')

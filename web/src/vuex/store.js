@@ -13,6 +13,8 @@ import register from '../components/register/register'
 import modify from '../components/modifyPsw/modify'
 import updataPsw from '../components/updatePsw/updataPsw'
 import member from '../components/member/member'
+import address from '../components/addressList/addressList'
+import addressAdd from '../components/addressAdd/adddressAdd'
 
 
 Vue.use(Vuex)
@@ -28,7 +30,9 @@ export default new Vuex.Store({
         register,
         modify,
         updataPsw,
-        member
+        member,
+        address,
+        addressAdd
 
     }
 })

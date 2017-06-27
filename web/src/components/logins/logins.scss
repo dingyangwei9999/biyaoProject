@@ -53,6 +53,14 @@
 				
 					// font-family: '宋体';
 				}
+				i{
+					position: absolute;
+					z-index: 100;
+					right: 0.15625rem;
+					top: 25%;
+					font-size: 20px;
+					color:#aaa;
+				}
 			}
 			.label-password{
 				position: relative;
@@ -70,6 +78,22 @@
 					font-size: 15px;
 		
 					// font-family: '宋体';
+				}
+				#yanjing{
+					position: absolute;
+					z-index: 100;
+					right: 10%;
+					top: 15%;
+					font-size: 28px;
+					// color: #aaa;
+				}
+				#cha{
+					position: absolute;
+					z-index: 100;
+					right: 0.15625rem;
+					top: 25%;
+					font-size: 20px;
+					color:#aaa;
 				}
 			}
 			.login-btn{

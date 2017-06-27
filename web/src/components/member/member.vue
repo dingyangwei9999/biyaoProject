@@ -37,7 +37,7 @@
 					<span>我的订单</span>
 					<i class="iconfont icon-danyoukuohao"></i>
 				</div>
-				<div class="myAddress">
+				<div class="myAddress" @click="address">
 					<span>我的地址</span>
 					<i class="iconfont icon-danyoukuohao"></i>
 				</div>
@@ -49,12 +49,12 @@
 					<span>客服中心(7*24小时服务)</span>
 					<i class="iconfont icon-danyoukuohao"></i>
 				</div>
-				<div class="kefuMsg">
+				<div class="kefuMsg" @click='message'>
 					<span>客服新消息</span>
 					<i class="iconfont icon-danyoukuohao"></i>
 				</div>
 				<div class="need">
-					关注'需要'，微信服务号获取最新消息
+					关注'&nbsp;还要&nbsp;'，微信服务号获取最新消息
 				</div>
 			</div>
 		</div>
@@ -77,6 +77,12 @@
 			},
 			change:function(){
 				this.$store.dispatch('change')
+			},
+			address:function(){
+				this.$store.dispatch('address')
+			},
+			message:function(){
+				this.$store.dispatch('msg')
 			}
 		}
 	}

@@ -9,26 +9,14 @@ const state = {
 
 
 const mutations = {
-	CHANGE:() => {
-		router.push({name:'updataPsw'})
-	},
-	ADDRESS:() =>{
-		router.push({name:'addressList'})
-	},
-	MSG:() =>{
-		router.push({name:'message'})
+	ADD:() =>{
+		router.push({name:'addressAdd'})
 	}
 }
 
 const actions = {
-	change:({commit}) => {
-		commit('CHANGE')
-	},
-	address:({commit}) =>{
-		commit('ADDRESS')
-	},
-	msg:({commit}) =>{
-		commit('MSG')
+	add:({commit}) =>{
+		commit('ADD')
 	}
 }	
 
