@@ -5,7 +5,7 @@
 		</div>
 		<div class="mainarea">
 			<h4>(请填写新增商品的各项参数，后执行保存操作) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
-			<button type="button" class="btn btn-primary" @click="clicksave">保存</button>&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-danger">清空</button>
+			<button type="button" class="btn btn-primary" @click="clicksave">保存</button>&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-danger" @click="clickcansel">清空</button>
 			</h4>
 			<form class="form-inline proForm" ref="productForm">
 				<p>必填项：</p>
@@ -31,14 +31,23 @@
 				</div>
 				<div class="form-group col-sm-4">
 					<label for="exampleInputName2">分类：&nbsp;</label>
-					<input type="text" class="form-control " id="exampleInputName2" name="classify" v-model="dataform.classify">
+					<!-- <input type="text" class="form-control " id="exampleInputName2" name="classify" v-model="dataform.classify"> -->
+				
+					<select class="form-control" name="classify" v-model="dataform.classify">
+					  <option>服装</option>
+					  <option>鞋靴</option>
+					  <option>运动</option>
+					  <option>皮具</option>
+					  <option>个护</option>
+					  <option>居家</option>
+					  <option>家电</option>
+					  <option>数码</option>
+					</select>	
 				</div>
-
-
 				<p>非必填项：</p>
 				<div class="form-group col-sm-4">
 					<label for="exampleInputName2">商品尺寸:&nbsp;</label>
-					<input type="text" class="form-control" id="exampleInputName2" name="size" v-model="dataform.size">
+					<input type="text" class="form-control" id="exampleInputName2" name="size" v-model="dataform.size" placeholder="例如：S M L XL">
 				</div>
 				<div class="form-group col-sm-4">
 					<label for="exampleInputName2">二级分类:&nbsp;</label>
@@ -47,7 +56,7 @@
 				
 				<div class="form-group col-sm-4">
 					<label for="exampleInputName2">颜色:&nbsp;</label>
-					<input type="text" class="form-control" id="exampleInputName2" name="color" v-model="dataform.color">
+					<input type="text" class="form-control" id="exampleInputName2" name="color" v-model="dataform.color" placeholder="例如：红色、绿色">
 				</div>
 				<div class="form-group col-sm-4">
 					<label for="exampleInputName2">重量:&nbsp;</label>
@@ -157,17 +166,29 @@
     import http from '../../../utils/HttpClient'
     import $ from 'jquery'
     // import '../../../../../web/src/global.js'
-    import erp from '../../../global.js'
+    import erp from '../../../../../web/src/global.js'
     // import '../../../global.js'
     import '../../../assets/jquery.form.js'
 	export default {
 		data(){
             return {
                 dataform: {},
+                erp:erp
             }
         },
         methods: {
-
+			clickcansel(){
+				console.log("按下清空")
+				var canselmessage=confirm("确定清空信息并重新填写？");  
+			    if(canselmessage==true)  
+			    {  
+			    	window.location.reload();
+			    }  
+			    else if(canselmessage==false)  
+			    {  
+			    	console.log('取消清空');
+			    }  
+			},
 			clicksave(){
 				console.log("按下确认")
 				console.log(this.dataform)
@@ -182,34 +203,29 @@
                 var prodata = JSON.stringify(self.dataform);
 				console.log(prodata)
 
-				// http.post('/addData', self.dataform)
-    //             .then(response => {
-    //                 if(response.status){
-    //                     $.alert('保存成功!'
-    //                     // 	, function(){
-    //                     //     router.push({name: 'clients'});
-    //                     // }
-    //                     )
-    //                 } else {
-    //                     $.alert(response.msg);
-    //                 }
-    //             })
-    //             
-    //             
-    //             
-            // $(function(){
-            // console.log(11111)
-            // }) 
-               	$('form').ajaxSubmit({
+				var mymessage=confirm("确定上传商品信息吗？");  
+			    if(mymessage==true)  
+			    {  
+
+			    	$('form').ajaxSubmit({
 					type: 'post',
 					dataType: 'json',
 					data:{data:prodata},
-					url: 'http://localhost:8787/addData',
+					url: erp.baseUrl+'addData',
 					success:function(){
                         console.log('成功');
                     },
 
-				});	
+					});	
+			    	window.location.reload();
+			    	
+
+			    }  
+			    else if(mymessage==false)  
+			    {  
+			    	console.log('取消');
+			    }  
+               	
 
 				// $.ajax({
 				// 	type: 'post',
