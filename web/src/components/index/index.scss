@@ -132,9 +132,16 @@
 				.commodity{
 					width:33.3%;
 					float: left;
-					img{
+					div{
 						width:100%;
+						height:106px;
+						display: table-cell;
+						vertical-align:middle;
+						img{
+							width:100%;
+						}
 					}
+					
 					p{
 						width: 100%;
 						text-overflow:ellipsis;
