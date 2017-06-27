@@ -79,6 +79,7 @@
 		data(){
 			return {
 				erp: erp,
+				// 模拟数据
 				bannerImgs: ['/src/assets/imgs/banner0.jpg','/src/assets/imgs/banner1.jpg','/src/assets/imgs/banner2.jpg','/src/assets/imgs/banner3.jpg'],
 				// 模拟数据
 				classify:['服装', '鞋靴', '运动', '皮具', '居家'],
