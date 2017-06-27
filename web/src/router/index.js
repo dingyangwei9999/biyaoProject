@@ -18,8 +18,8 @@ import Register from '../components/register/register.vue'
 import Member from '../components/member/member.vue'
 import Modify from '../components/modifyPsw/modify.vue'
 import MineMessage from '../components/mineMessage/message.vue'
-import UpdataPsw from '../components/updatePsw/updatapsw.vue'
-
+import UpdataPsw from '../components/updatePsw/updatapsw.vue' 
+import Order from '../components/order/order.vue'
 import Address from '../components/addressList/addressList.vue'
 import AddressAdd from '../components/addressAdd/addressAdd.vue'
 
@@ -89,6 +89,10 @@ const router = new VueRouter({
 		name: 'orderPage',
 		component: orderPageComponent
 
+	},{
+		path:'/order/orderlist',
+		name:'orderlist',
+		component:Order
 	}]
 })
 

@@ -2,7 +2,7 @@ var ApiResult = require('./ApiResult')
 
 var MongoDB = require('mongodb');
 var MongoDBServer = new MongoDB.Server('localhost', 27017);
-var db = new MongoDB.Db('biyaoMember', MongoDBServer);
+var db = new MongoDB.Db('biyao', MongoDBServer);
 
 module.exports = {
 

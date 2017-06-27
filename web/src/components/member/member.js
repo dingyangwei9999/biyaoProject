@@ -17,6 +17,12 @@ const mutations = {
 	},
 	MSG:() =>{
 		router.push({name:'message'})
+	},
+	ORDER:() =>{
+		router.push({name:'orderlist'})
+	},
+	ORDERS:() =>{
+		router.push({name:'orderlist'})
 	}
 }
 
@@ -29,6 +35,12 @@ const actions = {
 	},
 	msg:({commit}) =>{
 		commit('MSG')
+	},
+	order:({commit}) => {
+		commit('ORDER')
+	},
+	orders:({commit}) => {
+		commit('ORDERS')
 	}
 }	
 

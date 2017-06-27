@@ -18,7 +18,7 @@ const mutations = {
 			type:'post',
 			data:{username,psw},
 			dataType:'json',
-			url:'http://10.3.133.20:888/' + 'login',
+			url:'http://10.3.133.50:888/' + 'login',
 			success:function(response){
 				console.log(response)
 				console.log(response.status.status)
